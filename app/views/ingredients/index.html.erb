@@ -1,0 +1,16 @@
+<h1>All ingredients:</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ingredients.each do |ingredient| %>
+    <tr>
+      <td><%= link_to ingredient.name, ingredient_path(ingredient) %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

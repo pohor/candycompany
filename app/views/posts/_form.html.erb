@@ -6,6 +6,11 @@
 </div>
 
 <div>
+  <%= f.label :ingredient %>
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+</div>
+
+<div>
   <%= f.label :content %>
   <%= f.text_area :content %>
 </div>

@@ -1,9 +1,17 @@
 <strong> <%= @post.title %> </strong>
-
+<br />
 <strong>Przepis:</strong>
   <p>
   <%= @post.content %>
   </p>
+
+<strong>Składniki:</strong>
+  <ul>
+    <% @post.ingredients.each do |ingredient|%>
+    <li><%= ingredient.name %></li>
+
+  <% end %>
+  </ul>
 
 <strong>Czas:</strong>
   <p>
@@ -12,5 +20,5 @@
 
 <strong>Skala trudności:</strong>
   <p>
-  <%= @post.skills %>
+  <%= @post.skills_name %>
   </p>

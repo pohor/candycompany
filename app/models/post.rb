@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   has_many :ingredients_posts
   has_many :ingredients, through: :ingredients_posts
 
+  has_many :categories_posts
+  has_many :categories, through: :categories_posts
 
 
 

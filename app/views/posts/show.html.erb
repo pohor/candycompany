@@ -1,15 +1,22 @@
 <strong> <%= @post.title %> </strong>
-<br />
+<br>
+<br>
 <strong>Przepis:</strong>
   <p>
   <%= @post.content %>
   </p>
 
+<strong>Kategorie:</strong>
+  <ul>
+    <% @post.categories.each do |category|%>
+    <li><%= category.name %></li>
+    <% end %>
+  </ul>
+
 <strong>Składniki:</strong>
   <ul>
     <% @post.ingredients.each do |ingredient|%>
     <li><%= ingredient.name %></li>
-
   <% end %>
   </ul>
 

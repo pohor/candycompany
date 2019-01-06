@@ -11,6 +11,11 @@
 </div>
 
 <div>
+  <%= f.label :category %>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+</div>
+
+<div>
   <%= f.label :content %>
   <%= f.text_area :content %>
 </div>

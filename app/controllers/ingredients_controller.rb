@@ -37,7 +37,7 @@ class IngredientsController < ApplicationController
 
   def destroy
     @ingredient.destroy
-      redirect_to ingredient_path
+      redirect_to ingredients_path
   end
 
   private

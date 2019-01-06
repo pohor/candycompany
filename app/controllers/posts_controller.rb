@@ -49,6 +49,6 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :content, :time, :skills)
-
+    end
 
 end

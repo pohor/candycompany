@@ -1,0 +1,27 @@
+<%= form_for @post do |f| %>
+
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+</div>
+
+<div>
+  <%= f.label :time %>
+  <%= f.number_field :time %>
+</div>
+
+<div>
+  <%= f.label :skills %><br>
+  <%= f.collection_radio_buttons :skills, [[1, 'łatwy'] ,[2, 'średni'],[3, 'trudny']], :first, :last %>
+</div>
+
+<div>
+<%= f.submit %>
+</div>
+
+<% end %>

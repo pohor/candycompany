@@ -1,1 +1,9 @@
 <h1>Hello from new app!</h1>
+
+<% if current_user %>
+Hello, <%= current_user.email %>!<br />
+<%= link_to 'Wyloguj się', destroy_user_session_path, method: :delete %>
+<% else %>
+<%= link_to 'Zaloguj się', new_user_session_path %>
+<%= link_to 'Zarejestruj się', new_user_registration_path %>
+<% end %>

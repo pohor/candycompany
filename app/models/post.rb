@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :categories_posts
   has_many :categories, through: :categories_posts
 
-
+  belongs_to :user
 
   def skills_name
     return 'łatwy' if skills == '1'

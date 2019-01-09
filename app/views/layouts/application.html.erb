@@ -11,6 +11,20 @@
 
   <body>
     <%= render 'layouts/alerts' %>
+    <nav class="navbar navbar-dark bg-dark w-100 p-3 text-white">
+      <% if user_signed_in? %>
+        Hello, <%= current_user.email %>! | <%= link_to 'Log out', destroy_user_session_path, method: :delete, class:"text-white" %>
+      <% else %>
+        <%= link_to 'Sign in', new_user_session_path, class:"text-white" %>
+        <%= link_to 'Sign up', new_user_registration_path, class:"text-white" %>
+      <% end %>
+      <%= link_to 'Home', static_pages_home_path, class:"text-white" %>
+      <%= link_to 'Przepisy', posts_path, class:"text-white" %>
+      <%= link_to 'Warsztaty', static_pages_warsztaty_path, class:"text-white" %>
+      <%= link_to 'O mnie', static_pages_omnie_path, class:"text-white"%>
+      <%= link_to 'Kontakt', static_pages_kontakt_path, class:"text-white"%>
+      <%= link_to 'Współpraca', static_pages_wspolpraca_path, class:"text-white"%>
+    </nav>
     <%= yield %>
   </body>
 </html>

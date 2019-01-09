@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :categories_posts
   has_many :categories, through: :categories_posts
 
+  has_many :comments, as: :commented
+
   belongs_to :user
 
   def skills_name

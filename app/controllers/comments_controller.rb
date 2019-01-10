@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
       if @comment.save
         flash[:notice] = "You have successfuly added the comment."
-        redirect_to @commented
+        redirect_back(fallback_location: root_path)
       else
         render 'posts/show'
       end

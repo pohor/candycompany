@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
   before_action :authorize_post, only: [:destroy, :edit, :update]
-  # before_action :set_commented
 
   def index
     @posts = Post.all
@@ -47,10 +46,6 @@ class PostsController < ApplicationController
   end
 
   private
-    #
-    # def set_commented
-    #   @commented = Post.find(params[:post_id])
-    # end
 
     def authorize_post
       if @post.user != current_user && !current_user&.admin?

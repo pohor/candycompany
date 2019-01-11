@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
-  get 'static_pages/warsztaty'
-  get 'static_pages/omnie'
-  get 'static_pages/kontakt'
-  get 'static_pages/wspolpraca'
+  get '/home', to: 'static_pages#home'
+  get '/warsztaty', to: 'static_pages#warsztaty'
+  get '/omnie', to: 'static_pages#omnie'
+  get 'kontakt', to: 'static_pages#kontakt'
+  get '/wspolpraca', to: 'static_pages#wspolpraca'
   root 'static_pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

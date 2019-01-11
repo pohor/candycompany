@@ -11,19 +11,19 @@
 
   <body>
     <%= render 'layouts/alerts' %>
-    <nav class="navbar navbar-dark bg-dark w-100 p-3 text-white">
+    <nav>
       <% if user_signed_in? %>
-        Hello, <%= current_user.email %>! | <%= link_to 'Log out', destroy_user_session_path, method: :delete, class:"text-white" %>
+        Hello, <%= current_user.email %>! | <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to 'Sign in', new_user_session_path, class:"text-white" %>
-        <%= link_to 'Sign up', new_user_registration_path, class:"text-white" %>
+        <%= link_to 'Sign in', new_user_session_path %>
+        <%= link_to 'Sign up', new_user_registration_path %>
       <% end %>
-      <%= link_to 'Home', static_pages_home_path, class:"text-white" %>
-      <%= link_to 'Przepisy', posts_path, class:"text-white" %>
-      <%= link_to 'Warsztaty', static_pages_warsztaty_path, class:"text-white" %>
-      <%= link_to 'O mnie', static_pages_omnie_path, class:"text-white"%>
-      <%= link_to 'Kontakt', static_pages_kontakt_path, class:"text-white"%>
-      <%= link_to 'Współpraca', static_pages_wspolpraca_path, class:"text-white"%>
+      <%= link_to 'Home', home_path %>
+      <%= link_to 'Przepisy', posts_path %>
+      <%= link_to 'Warsztaty', warsztaty_path %>
+      <%= link_to 'O mnie', omnie_path %>
+      <%= link_to 'Kontakt', kontakt_path %>
+      <%= link_to 'Współpraca', wspolpraca_path %>
     </nav>
     <%= yield %>
   </body>

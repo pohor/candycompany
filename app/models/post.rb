@@ -13,4 +13,12 @@ class Post < ApplicationRecord
     return 'trudny' if skills == '3'
   end
 
+  def self.search(search)
+    if search
+      where(["content LIKE ? OR title LIKE ?", "%#{search}%", "%#{search}%"])
+    else
+      all
+    end
+  end
+
 end

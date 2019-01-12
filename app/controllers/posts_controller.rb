@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :authorize_post, only: [:destroy, :edit, :update]
 
   def index
-    @posts = Post.all
+    @posts = Post.search(params[:search])
+    @ingredients = Ingredient.all
   end
 
   def show
@@ -60,7 +61,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, :time, :skills, ingredient_ids: [], category_ids: [])
+      params.require(:post).permit(:title, :content, :time, :skills, ingredient_ids: [], category_ids: [], ingredient_search: [])
     end
 
 end

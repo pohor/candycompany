@@ -1,5 +1,15 @@
 <h1>All posts:</h1>
 
+<h5>Search for recipe:</h5>
+
+<%= form_tag(posts_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
+
+
 <table>
   <thead>
     <tr>

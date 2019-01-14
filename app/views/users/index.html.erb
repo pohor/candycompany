@@ -1,0 +1,6 @@
+<h5>All users:</h5>
+
+<% @users.each do |user| %>
+<%= link_to user.email, user %>
+<%= user.email %>
+<% end %>

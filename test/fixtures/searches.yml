@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ingredient: MyString
+  category: MyString
+  time: 1
+  skills: 1
+
+two:
+  ingredient: MyString
+  category: MyString
+  time: 1
+  skills: 1

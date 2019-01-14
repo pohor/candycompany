@@ -1,0 +1,16 @@
+<h5>Searches result:</h5>
+<%= link_to 'Back', new_search_path %>
+
+<% if @search.search_posts.empty? %>
+  <p>No Posts Found</p>
+
+<% else %>
+
+  <% @search.search_posts.each do |p| %>
+    <br />
+
+    <div class ="div" %>
+      <h5><%= link_to p.title, post_path(p) %></h5>
+    </div>
+  <% end %>
+<% end %>

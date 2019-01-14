@@ -31,6 +31,21 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname, autocomplete: "your first name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname, autocomplete: "your last name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, autocomplete: "Do you want to say a couple things about yourself?" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

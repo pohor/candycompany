@@ -1,6 +1,8 @@
 <h5>All users:</h5>
 
 <% @users.each do |user| %>
-<%= link_to user.email, user %>
-<%= user.email %>
+<p>
+  <%= link_to user.firstname, user %>
+  <%= user.lastname %>
+</p>
 <% end %>

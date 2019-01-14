@@ -7,6 +7,9 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
+
+
+
   def skills_name
     return 'łatwy' if skills == '1'
     return 'średni' if skills == '2'

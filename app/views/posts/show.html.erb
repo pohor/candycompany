@@ -1,5 +1,6 @@
 <strong> <%= @post.title %> </strong>
 <br>
+<%= link_to favorite_text, favorites_update_path(post: @post), id:'favorite_link', remote: true %>
 <br>
 <strong>Przepis:</strong>
   <p>

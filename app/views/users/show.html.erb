@@ -6,6 +6,12 @@
 <%= @user.description %>
 </p>
 
+<h4>Favorite posts:</h4>
+<% @user.favorites.each do |favorite| %>
+  <%= link_to favorite.post.title, favorite.post %>
+  <br />
+<% end %>
+<br />
 <% if user_signed_in? && current_user == @user %>
   <%= link_to 'Edit profile', edit_user_registration_path(@user) %>
 <% end %>

@@ -1,13 +1,9 @@
-<li>
-  <%= comment.body %>
 
+<%= comment.body %>
   <%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
-      <% end %>
-
-  <ul>
-      <%= render partial: 'comments/comment', collection: comment.comments %>
-  </ul>
-
-</li>
+    <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+    <%= f.submit "Reply"  %>
+  <% end %>
+<p style="margin-left:80px">
+<%= render partial: 'comments/comment', collection: comment.comments %>
+</p>

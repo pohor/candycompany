@@ -1,7 +1,13 @@
 <strong> <%= @post.title %> </strong>
 <br>
+<% if user_signed_in? %>
 <%= link_to favorite_text, favorites_update_path(post: @post), id:'favorite_link', remote: true %>
+<% end %>
 <br>
+<strong>Liczba polubień:</strong>
+<%= @post.favorites_count %>
+<br />
+<br />
 <strong>Przepis:</strong>
   <p>
   <%= @post.content %>

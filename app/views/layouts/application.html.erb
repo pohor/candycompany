@@ -25,6 +25,9 @@
       <%= link_to 'Kontakt', kontakt_path %>
       <%= link_to 'Współpraca', wspolpraca_path %>
       <%= link_to 'Społeczność', users_path %>
+      <% if current_user.admin? %>
+      <%= link_to 'Admin page', admin_path %>
+      <% end %>
     </nav>
     <%= yield %>
   </body>

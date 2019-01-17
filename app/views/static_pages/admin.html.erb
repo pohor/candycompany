@@ -1,0 +1,86 @@
+<h1>Admin page:</h1>
+
+<h2>Posts:</h2>
+<strong><%= link_to 'New Post', new_post_path %></strong>
+<br />
+<br />
+<table>
+  <thead>
+    <tr>
+      <th>Tytuł</th>
+      <th>Liczba polubień</th>
+      <th>Kategorie</th>
+      <th>Składniki</th>
+      <th>Liczba komentarzy</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= link_to post.title, post_path(post) %> </td>
+      <td><%= post.favorites_count %> </td>
+      <td><% post.categories.each do |category| %>
+          <%= category.name %>
+          <% end %>
+      </td>
+      <td><% post.ingredients.each do |ingredient| %>
+          <%= ingredient.name %>
+          <% end %>
+      </td>
+      <td></td>
+      <td><%= link_to 'Edytuj', edit_post_path(post) %> </td>
+      <td><%= link_to 'Usuń', post_path(post), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<br />
+<h2>Ingredients:</h2>
+<strong><%= link_to 'New Ingredient', new_ingredient_path %></strong>
+<br />
+<br />
+<table>
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ingredients.each do |ingredient| %>
+    <tr>
+      <td><%= link_to ingredient.name, ingredient_path(ingredient) %> </td>
+      <td><%= link_to 'Edytuj', edit_ingredient_path(ingredient) %> </td>
+      <td><%= link_to 'Usuń', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<br />
+<h2>Categories:</h2>
+<strong><%= link_to 'New Category', new_category_path %></strong>
+<br />
+<br />
+<table>
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= link_to category.name, category_path(category) %> </td>
+      <td><%= link_to 'Edytuj', edit_category_path(category) %> </td>
+      <td><%= link_to 'Usuń', category_path(category), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

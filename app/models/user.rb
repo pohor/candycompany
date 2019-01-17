@@ -8,5 +8,8 @@ class User < ApplicationRecord
 
   has_many :favorites
 
-
+  def admin?
+    admin
+  end
+  
 end

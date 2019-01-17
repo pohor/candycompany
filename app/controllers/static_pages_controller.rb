@@ -1,9 +1,11 @@
 class StaticPagesController < ApplicationController
+  before_action :find_content
+
   def home
-    @posts = Post.all
   end
 
   def warsztaty
+
   end
 
   def omnie
@@ -14,4 +16,19 @@ class StaticPagesController < ApplicationController
 
   def wspolpraca
   end
+
+  def admin
+  
+  end
+
+  private
+
+  def find_content
+    @posts = Post.all
+    @categories = Category.all
+    @ingredients = Ingredient.all
+    @users = User.all
+  end
+
+
 end

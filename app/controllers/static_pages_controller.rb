@@ -5,7 +5,6 @@ class StaticPagesController < ApplicationController
   end
 
   def warsztaty
-
   end
 
   def omnie
@@ -18,7 +17,7 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
-  
+
   end
 
   private

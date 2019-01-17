@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'favorites/update'
   get 'users/show'
   get '/home', to: 'static_pages#home'
-  get '/warsztaty', to: 'static_pages#warsztaty'
   get '/omnie', to: 'static_pages#omnie'
   get 'kontakt', to: 'static_pages#kontakt'
   get '/wspolpraca', to: 'static_pages#wspolpraca'
@@ -18,6 +17,8 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts
+
+  resources :workshops
 
   resources :ingredients
 

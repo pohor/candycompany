@@ -20,12 +20,12 @@
       <% end %>
       <%= link_to 'Home', home_path %>
       <%= link_to 'Przepisy', posts_path %>
-      <%= link_to 'Warsztaty', warsztaty_path %>
+      <%= link_to 'Warsztaty', workshops_path %>
       <%= link_to 'O mnie', omnie_path %>
       <%= link_to 'Kontakt', kontakt_path %>
       <%= link_to 'Współpraca', wspolpraca_path %>
       <%= link_to 'Społeczność', users_path %>
-      <% if current_user.admin? %>
+      <% if current_user&.admin? %>
       <%= link_to 'Admin page', admin_path %>
       <% end %>
     </nav>

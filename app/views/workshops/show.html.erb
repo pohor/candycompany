@@ -1,0 +1,30 @@
+<p>
+  <strong> <%= @workshop.name %> </strong>
+</p>
+<br>
+<br>
+
+<strong>Data:</strong>
+  <p>
+  od <%= @workshop.date_start %>
+  do <%= @workshop.date_end %>
+  </p>
+<br />
+<br />
+
+<strong>Godziny:</strong>
+  <p>
+  od <%= @workshop.time_start.to_s(:time) %>
+  do <%= @workshop.end_time.to_s(:time) %>
+  </p>
+<br />
+<br />
+
+<strong>Opis:</strong>
+<p>
+  <%= @workshop.description %>
+</p>
+<br />
+<br />
+
+<%= link_to 'Back to all workshops', workshops_path %>

@@ -1,0 +1,43 @@
+<%= form_for @workshop do |f| %>
+
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <%= f.label :place %>
+  <%= f.text_field :place %>
+</div>
+
+<div>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+</div>
+
+<div>
+  <%= f.label :date_start %>
+  <%= f.date_field :date_start %>
+</div>
+
+<div>
+  <%= f.label :date_end %>
+  <%= f.date_field :date_end %>
+</div>
+
+<div>
+  <%= f.label :time_start %>
+  <%= f.time_field :time_start, value: "%H:%M" %>
+</div>
+
+<div>
+  <%= f.label :end_time %>
+  <%= f.time_field :end_time, value: "%H:%M" %>
+</div>
+
+
+<div>
+<%= f.submit %>
+</div>
+
+<% end %>

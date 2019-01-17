@@ -4,8 +4,6 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def warsztaty
-  end
 
   def omnie
   end
@@ -17,7 +15,6 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
-
   end
 
   private
@@ -27,6 +24,7 @@ class StaticPagesController < ApplicationController
     @categories = Category.all
     @ingredients = Ingredient.all
     @users = User.all
+    @workshops = Workshop.all
   end
 
 

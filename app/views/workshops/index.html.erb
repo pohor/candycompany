@@ -1,0 +1,30 @@
+<h1>All workshops:</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>Data rozpoczęcia</th>
+      <th>Data zakończenia</th>
+      <th>Godzina startu</th>
+      <th>Godzina zakończenia</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workshops.each do |workshop| %>
+    <tr>
+      <td><%= link_to workshop.name, workshop_path(workshop) %> </td>
+      <td><%= workshop.date_start %> </td>
+      <td><%= workshop.date_end %></td>
+      <td><%= workshop.time_start.to_s(:time) %></td>
+      <td><%= workshop.end_time.to_s(:time) %></td>
+      <td><%= link_to 'Edytuj', edit_workshop_path(workshop) %> </td>
+      <td><%= link_to 'Usuń', workshop_path(workshop), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<br />

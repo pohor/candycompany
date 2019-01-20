@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_01_20_144705) do
+=======
+ActiveRecord::Schema.define(version: 2019_01_14_180615) do
+>>>>>>> parent of 4cda737... Add counting being favorited for posts and update view accordingly
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -63,8 +67,11 @@ ActiveRecord::Schema.define(version: 2019_01_20_144705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+<<<<<<< HEAD
     t.integer "favorites_count", default: 0
     t.string "post_cover"
+=======
+>>>>>>> parent of 4cda737... Add counting being favorited for posts and update view accordingly
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

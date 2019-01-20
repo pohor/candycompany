@@ -6,6 +6,11 @@
 </div>
 
 <div>
+  <label>Cover photo:</label>
+  <%= f.file_field :post_cover %>
+</div>
+
+<div>
   <%= f.label :ingredient %>
   <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
 </div>

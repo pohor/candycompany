@@ -1,5 +1,9 @@
 <strong> <%= @post.title %> </strong>
 <br>
+<br>
+<p>
+  <%= image_tag(@post.post_cover.url, alt:'Image') if @post.post_cover? %>
+</p>
 <% if user_signed_in? %>
 <%= link_to favorite_text, favorites_update_path(post: @post), id:'favorite_link', remote: true %>
 <% end %>
@@ -39,4 +43,4 @@
 
 <br />
 <br />
-<%= link_to 'Back to all posts', posts_path %>  
+<%= link_to 'Back to all posts', posts_path %>

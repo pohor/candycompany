@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-
+  mount_uploader :post_cover, PostCoverUploader
 
 
   def skills_name

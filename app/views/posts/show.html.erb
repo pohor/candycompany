@@ -1,4 +1,7 @@
 <strong> <%= @post.title %> </strong>
+<p>
+  <%= image_tag(@post.post_cover.url, alt:'Image') if @post.post_cover? %>
+</p>
 <strong>Przepis:</strong>
   <p>
   <%= @post.content %>

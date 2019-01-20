@@ -9,7 +9,6 @@ class Post < ApplicationRecord
 
   mount_uploader :post_cover, PostCoverUploader
 
-
   def skills_name
     return 'łatwy' if skills == '1'
     return 'średni' if skills == '2'

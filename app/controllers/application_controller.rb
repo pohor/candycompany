@@ -8,9 +8,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :description])
   end
 
-  def favorite_text
-    return @favorite_exists ? "unfavorite" : "favorite"
-  end
-
-  helper_method :favorite_text
 end

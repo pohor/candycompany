@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'favorites/update'
   get 'users/show'
   get '/home', to: 'static_pages#home'
   get '/omnie', to: 'static_pages#omnie'
@@ -13,7 +12,6 @@ Rails.application.routes.draw do
   devise_for :users do
     get ':user/edit', to: 'devise/registration#edit'
   end
-
   resources :users
 
   resources :posts

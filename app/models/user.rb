@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   has_many :posts
 
-  has_many :favorites
+
 
   def admin?
     admin
   end
-  
+
 end

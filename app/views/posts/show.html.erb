@@ -1,15 +1,4 @@
 <strong> <%= @post.title %> </strong>
-<br>
-<<<<<<< HEAD
-<br>
-<p>
-  <%= image_tag(@post.post_cover.url, alt:'Image') if @post.post_cover? %>
-</p>
-<% if user_signed_in? %>
-=======
->>>>>>> parent of 4cda737... Add counting being favorited for posts and update view accordingly
-<%= link_to favorite_text, favorites_update_path(post: @post), id:'favorite_link', remote: true %>
-<br>
 <strong>Przepis:</strong>
   <p>
   <%= @post.content %>

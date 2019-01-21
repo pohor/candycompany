@@ -2,6 +2,18 @@
 <p>
   <%= image_tag(@post.post_cover.url, alt:'Image') if @post.post_cover? %>
 </p>
+<p>
+  <% if @heart.persisted? %>
+  <i class="fe fe-heart"><%= link_to 'Unheart', post_heart_path(@post, @heart), method: :delete %></i>
+  <% else %>
+  <i class="fe fe-heart-o"> <%= link_to 'Heart', post_hearts_path(@post), method: :post %> </i>
+  <% end %>
+</p>
+<p>
+<%= pluralize(@post.hearts.count, 'person') %> hearted this post  
+</p>
+
+
 <strong>Przepis:</strong>
   <p>
   <%= @post.content %>

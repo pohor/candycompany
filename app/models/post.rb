@@ -7,6 +7,9 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
+  has_many :hearts
+  has_many :users, through: :hearts
+
   mount_uploader :post_cover, PostCoverUploader
 
   def skills_name

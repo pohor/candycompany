@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  resources :posts
+  resources :posts do
+     resources :hearts, only: %i[create destroy]
+  end
 
   resources :workshops
 

@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @heart = Heart.find_or_initialize_by(post: @post, user: current_user)
   end
 
   def new

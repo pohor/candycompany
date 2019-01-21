@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_many :posts
 
+  has_many :hearts
+  has_many :hearted_posts, through: :hearts, source: :post
+
 
 
   def admin?

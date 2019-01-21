@@ -5,7 +5,26 @@
 <p>
 <%= @user.description %>
 </p>
+<div>
+  <strong>
+    Hearted by
+    <% if current_user == @user %>
+    you:
+    <% else %>
+    this user:
+    <% end %>
 
-<% if user_signed_in? && current_user == @user %>
-  <%= link_to 'Edit profile', edit_user_registration_path(@user) %>
-<% end %>
+  </strong>
+   <% @user.hearted_posts.each do |post| %>
+   <p>
+     <%= link_to post.title, post_path(post) %>
+   </p>
+   <% end %>
+</div>
+<br />
+<br />
+<p>
+  <% if user_signed_in? && current_user == @user %>
+    <%= link_to 'Edit profile', edit_user_registration_path(@user) %>
+  <% end %>
+</p>

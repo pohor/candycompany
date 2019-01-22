@@ -1,5 +1,10 @@
 <h1>All posts:</h1>
 
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :title_or_content_cont, class: 'form-control', placeholder: 'Search' %>
+  <%= f.submit 'search', class: 'btn btn-default' %>
+<% end %>
+
 <table>
   <thead>
     <tr>

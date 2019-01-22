@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :authorize_post, only: [:destroy, :edit, :update]
 
   def index
-    @posts = Post.all
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
   end
 
   def show

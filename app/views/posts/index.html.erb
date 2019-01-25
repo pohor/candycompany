@@ -1,20 +1,24 @@
 <h1>All posts:</h1>
 
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :title_or_content_cont, class: 'form-control', placeholder: 'Search' %>
+  <%= f.search_field :title_or_content_cont_any, class: 'form-control', placeholder: 'Search' %>
   <%= f.submit 'search', class: 'btn btn-default' %>
 <% end %>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
+      <th><%= sort_link @q, :name, "Tytuł"%></th>
+      <th><%= sort_link @q, :time, "Czas"%></th>
+      <th><%= sort_link @q, :skills, "Poziom"%></th>
     </tr>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
     <tr>
       <td><%= link_to post.title, post_path(post) %> </td>
+      <td><%= post.time %> </td>
+      <td><%= post.skills_name %> </td>
     </tr>
     <% end %>
   </tbody>

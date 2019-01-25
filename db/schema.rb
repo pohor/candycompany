@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(version: 2019_01_21_180504) do
     t.index ["post_id", "category_id"], name: "index_categories_posts_on_post_id_and_category_id"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text "body"
-    t.integer "commented_id"
-    t.string "commented_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "hearts", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "user_id", null: false

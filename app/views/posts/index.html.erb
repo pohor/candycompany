@@ -26,3 +26,28 @@
   </tbody>
 </table>
 </div>
+
+<h3>Posts by Categories:</h3>
+<table>
+  <thead>
+    <% @categories.each do |category| %>
+    <tr>
+      <td>
+        <%= category.name %>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @all_posts.each do |post| %>
+    <% if post.categories.any? { |cat| cat == category } %>
+    <th>
+      <td>
+        <%= image_tag(post.post_cover.url, alt:'Image') if post.post_cover? %>
+        <%= link_to post.title, post_path(post) %>
+      </td>
+    </th>
+    <% end %>
+    <% end %>
+  </tbody>
+  <% end %>
+</table>

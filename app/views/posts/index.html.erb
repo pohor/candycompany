@@ -1,8 +1,23 @@
 <h1>All posts:</h1>
 
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :title_or_content_cont_any, class: 'form-control', placeholder: 'Search' %>
-  <%= f.submit 'search', class: 'btn btn-default' %>
+  <div>
+    <%= f.label :title_or_content_cont_any, "Tytuł lub treść zawiera" %>
+    <%= f.search_field :title_or_content_cont_any, class: 'form-control', placeholder: 'zawiera w tekście lub tytule' %>
+  </div>
+  <div>
+    <%= f.label :time_gteq, "Czas wykonania pomiędzy"%>
+    <%= f.text_field :time_gteq, placeholder: 'min'%>
+    <%= f.label :time_lteq, "and" %>
+    <%= f.text_field :time_lteq, placeholder: 'zawiera w tekście lub tytule'%>
+  </div>
+  <div>
+    <%= f.label :skills_eq, "Poziom trudności" %><br />
+    <%= f.collection_radio_buttons :skills_eq, [[1, 'łatwy'] ,[2, 'średni'],[3, 'trudny']], :first, :last %>
+  </div>
+  <div>
+  <%= f.submit 'Szukaj' %>
+  </div>
 <% end %>
 
 <table>

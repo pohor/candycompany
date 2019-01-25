@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   resources :posts do
      resources :hearts, only: %i[create destroy]
+     collection do
+       match 'search' => 'posts#search', via: [:get, :post], as: :search
+    end
   end
 
   resources :workshops

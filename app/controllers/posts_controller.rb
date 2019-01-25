@@ -5,7 +5,8 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result
+    @posts = @q.result(distinct: true)
+    @q.build_condition
   end
 
   def show
@@ -45,6 +46,11 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
       redirect_to posts_path
+  end
+
+  def search
+    index
+    render :index
   end
 
   private

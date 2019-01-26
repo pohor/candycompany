@@ -19,7 +19,6 @@ class PostsController < ApplicationController
   end
 
   def all
-    @all_posts = Post.all
   end
 
   def edit

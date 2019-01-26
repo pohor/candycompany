@@ -15,4 +15,8 @@ class User < ApplicationRecord
     admin
   end
 
+  def fullname
+    firstname + ' ' + lastname
+  end
+
 end

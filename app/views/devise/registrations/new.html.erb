@@ -32,6 +32,11 @@
   </div>
 
   <div class="field">
+    <label>Your avatar:</label><br />
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description, autocomplete: "Do you want to say a couple things about yourself?" %>
   </div>

@@ -1,32 +1,19 @@
-<h3>Posts by Categories:</h3>
-<table>
-  <thead>
-    <% @categories.each do |category| %>
-    <tr>
-      <td>
-        <h4><%= category.name %></h4>
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <% if category.posts.any? == false %>
-    <th>
-      <td>
-        Nie ma żadnych postów w tej kategorii
-      </td>
-    </th>
-    <% else %>
-      <% @all_posts.each do |post| %>
-        <% if post.categories.any? { |cat| cat == category } %>
-          <th>
-            <td>
-              <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %><br />
-              <%= link_to post.title, post_path(post) %>
-            </td>
-          </th>
-        <% end %>
+<% @categories.each do |category| %>
+<div class='hr'><span class='hr-title text-secondary'><%= category.name.upcase %></span></div>
+<div>
+  <% if category.posts.any? == false %>
+    <p>
+      Nie ma żadnych postów w tej kategorii
+    </p>
+  <% else %>
+    <% @all_posts.each do |post| %>
+      <% if post.categories.any? { |cat| cat == category } %>
+        <a>
+          <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %>
+          <%= link_to post.title, post_path(post), class:'text-secondary'%>
+        </a>
       <% end %>
     <% end %>
-  </tbody>
   <% end %>
-</table>
+</div>
+<% end %>

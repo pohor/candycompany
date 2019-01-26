@@ -92,6 +92,9 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.6.0)
+    dotenv-rails (2.6.0)
+      dotenv (= 2.6.0)
+      railties (>= 3.2, < 6.0)
     erubi (1.8.0)
     execjs (2.7.0)
     feathericon-rails (1.0.0)
@@ -247,7 +250,7 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.2)
   devise
-  dotenv
+  dotenv-rails
   feathericon-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

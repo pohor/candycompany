@@ -18,8 +18,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 gem 'ransack'
 gem 'feathericon-rails'
+gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
 gem 'cloudinary'
-gem 'dotenv'
+
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 # Use CoffeeScript for .coffee assets and views

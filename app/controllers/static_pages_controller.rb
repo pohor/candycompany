@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :find_content
 
   def home
+    @all_posts = Post.all
   end
 
 

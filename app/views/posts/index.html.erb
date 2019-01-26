@@ -1,4 +1,4 @@
-<h1>All posts:</h1>
+<h2>Indeks przepisów:</h2>
 <div>
 <%= search_form_for @q do |f| %>
   <%= f.search_field :title_or_content_cont_any, class: 'form-control', placeholder: 'Szukaj po tytułach i treści' %>
@@ -27,35 +27,4 @@
 </table>
 </div>
 
-<h3>Posts by Categories:</h3>
-<table>
-  <thead>
-    <% @categories.each do |category| %>
-    <tr>
-      <td>
-        <h4><%= category.name %></h4>
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <% if category.posts.any? == false %>
-    <th>
-      <td>
-        Nie ma żadnych postów w tej kategorii
-      </td>
-    </th>
-    <% else %>
-      <% @all_posts.each do |post| %>
-        <% if post.categories.any? { |cat| cat == category } %>
-          <th>
-            <td>
-              <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %><br />
-              <%= link_to post.title, post_path(post) %>
-            </td>
-          </th>
-        <% end %>
-      <% end %>
-    <% end %>
-  </tbody>
-  <% end %>
-</table>
+<%= render 'all' %>

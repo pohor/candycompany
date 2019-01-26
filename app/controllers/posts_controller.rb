@@ -18,6 +18,9 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def all
+    @all_posts = Post.all
+  end
 
   def edit
   end

@@ -1,11 +1,16 @@
 <nav class="navbar navbar-light bg-light">
+  <div class="text-left">
   <% if user_signed_in? %>
-    Witaj, <%= current_user.fullname%>! <%= link_to 'WYLOGUJ SIĘ', destroy_user_session_path, method: :delete, class:'text-secondary' %>
-  <%= link_to 'PROFIL', current_user, class:'text-secondary'%> |
-  <% else %>
-    <%= link_to 'ZALOGUJ SIĘ', new_user_session_path, class:'text-secondary' %>
-    <%= link_to 'ZAREJESTRUJ SIĘ', new_user_registration_path, class:'text-secondary' %>
+  <a class="text-secondary small">WITAJ, <%= current_user.fullname.upcase %>! |
+    <%= link_to 'WYLOGUJ SIĘ', destroy_user_session_path, method: :delete, class:'text-secondary small' %> |
+    <%= link_to 'PROFIL', current_user, class:'text-secondary small'%> |
+  </a>
+    <% else %>
+    <%= link_to 'ZALOGUJ SIĘ', new_user_session_path, class:'text-secondary small' %>
+    <%= link_to 'ZAREJESTRUJ SIĘ', new_user_registration_path, class:'text-secondary small' %>
   <% end %>
+
+</div>
   <%= link_to 'HOME', home_path, class:'text-secondary'%>
   <%= link_to 'PRZEPISY', posts_path, class:'text-secondary' %>
   <%= link_to 'WARSZTATY', workshops_path, class:'text-secondary' %>
@@ -14,7 +19,7 @@
   <%= link_to 'WSPÓŁPRACA', wspolpraca_path, class:'text-secondary' %>
   <%= link_to 'SPOŁECZNOŚĆ', users_path, class:'text-secondary' %>
   <% if current_user&.admin? %>
-    <%= link_to 'Admin page', admin_path, class:'text-secondary' %>
+    <%= link_to 'ADMIN PAGE', admin_path, class:'text-secondary small' %>
   <% end %>
   <a class="navbar-brand" href="home">
     <%= image_tag("brand/logo.png") %>

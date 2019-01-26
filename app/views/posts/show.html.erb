@@ -1,6 +1,6 @@
 <strong> <%= @post.title %> </strong>
 <p>
-  <%= image_tag(@post.post_cover.url, alt:'Image') if @post.post_cover? %>
+  <%= image_tag(@post.post_cover.url(:regular), alt:'Image') if @post.post_cover? %>
 </p>
 <p>
   <% if @heart.persisted? %>
@@ -10,7 +10,7 @@
   <% end %>
 </p>
 <p>
-<%= pluralize(@post.hearts.count, 'person') %> hearted this post  
+<%= pluralize(@post.hearts.count, 'person') %> hearted this post
 </p>
 
 
@@ -46,3 +46,7 @@
 <br />
 <br />
 <%= link_to 'Back to all posts', posts_path %>
+<% if current_user.admin? %>
+| <%= link_to 'Edytuj', edit_post_path(@post) %>
+| <%= link_to 'Usuń', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
+<% end %>

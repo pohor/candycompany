@@ -13,15 +13,6 @@
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/alerts' %>
     <br>
-    <div class="container-fluid h-100">
-      <div class="row justify-content-center h-100">
-        <div class="col-4 hidden-md-down">
-          COSTAM
-        </div>
-        <div class="col-10 col-sm-10 col-md-10 col-lg-8 col-xl-8">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>

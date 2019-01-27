@@ -1,52 +1,61 @@
-<strong> <%= @post.title %> </strong>
+<h3 class="text-secondary"> <%= @post.title %> </h3>
 <p>
   <%= image_tag(@post.post_cover.url(:regular), alt:'Image') if @post.post_cover? %>
 </p>
-<p>
+<p class="text-secondary small">
+<% if user_signed_in? %>
   <% if @heart.persisted? %>
-  <i class="fe fe-heart"><%= link_to 'Unheart', post_heart_path(@post, @heart), method: :delete %></i>
+  <i class="fe fe-heart"><%= link_to 'Unheart', post_heart_path(@post, @heart), method: :delete, class:'text-secondary' %></i>
   <% else %>
-  <i class="fe fe-heart-o"> <%= link_to 'Heart', post_hearts_path(@post), method: :post %> </i>
+  <i class="fe fe-heart-o"> <%= link_to 'Heart', post_hearts_path(@post), method: :post, class:'text-secondary' %> </i>
   <% end %>
+<% else %>
+<i class="fe fe-heart">You can't heart this while you're not logged in</i>
+<% end %>
 </p>
-<p>
+<p class="text-secondary small">
 <%= pluralize(@post.hearts.count, 'person') %> hearted this post
 </p>
+<br />
+<br />
+<div class="text-secondary">
+  <h4>Przepis:</h4>
+    <p>
+    <%= @post.content %>
+    </p>
 
+  <h6>Kategorie:</h6>
+    <ul>
+      <% @post.categories.each do |category|%>
+      <li><%= category.name %></li>
+      <% end %>
+    </ul>
 
-<strong>Przepis:</strong>
-  <p>
-  <%= @post.content %>
-  </p>
-
-<strong>Kategorie:</strong>
-  <ul>
-    <% @post.categories.each do |category|%>
-    <li><%= category.name %></li>
+  <h6>Składniki:</h6>
+    <ul>
+      <% @post.ingredients.each do |ingredient|%>
+      <li><%= ingredient.name %></li>
     <% end %>
-  </ul>
+    </ul>
 
-<strong>Składniki:</strong>
-  <ul>
-    <% @post.ingredients.each do |ingredient|%>
-    <li><%= ingredient.name %></li>
+  <h6>Czas:</h6>
+    <p>
+    <%= @post.time %> minut
+    </p>
+
+  <h6>Skala trudności:</h6>
+    <p>
+    <%= @post.skills_name %>
+    </p>
+</div>
+
+
+<br />
+<br />
+<p class="text-secondary">
+  <%= link_to 'Back to all posts', posts_path, class:'text-secondary'%>
+  <% if current_user&.admin? %>
+  | <%= link_to 'Edytuj', edit_post_path(@post), class:'text-secondary'%>
+  | <%= link_to 'Usuń', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
   <% end %>
-  </ul>
-
-<strong>Czas:</strong>
-  <p>
-  <%= @post.time %> minutes
-  </p>
-
-<strong>Skala trudności:</strong>
-  <p>
-  <%= @post.skills_name %>
-  </p>
-
-<br />
-<br />
-<%= link_to 'Back to all posts', posts_path %>
-<% if current_user&.admin? %>
-| <%= link_to 'Edytuj', edit_post_path(@post) %>
-| <%= link_to 'Usuń', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
-<% end %>
+</p>

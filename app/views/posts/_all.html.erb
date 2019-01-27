@@ -1,6 +1,6 @@
 <% @categories.each do |category| %>
 <div class='hr'><span class='hr-title text-secondary'><%= category.name.upcase %></span></div>
-<div align="center">
+<div>
   <table "table text-center">
   <% if category.posts.any? == false %>
     <p class='text-secondary small'>
@@ -43,3 +43,4 @@
 </button>
 </div>
 <% end %>
+</div>

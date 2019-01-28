@@ -12,19 +12,34 @@
     <%= f.text_field :time_lteq, placeholder: 'max czas wykonania', class: 'form-control form-control-sm text-secondary small align-left' %>
   </div>
   <br />
-  <div class="text-secondary small">
+  <div class="text-secondary small form-check form-check-inline">
     <label>Poziom trudności:</label><br />
-    <%= f.collection_check_boxes :"skills_in", [[1, 'łatwy'] ,[2, 'średni'],[3, 'trudny']], :first, :last %>
+    <%= f.collection_check_boxes :"skills_in", [[1, 'łatwy'] ,[2, 'średni'],[3, 'trudny']], :first, :last do |b| %>
+        <%= b.label(class: "check_box") do %>
+            <%= b.check_box(class: "check_box") %>
+            <%= b.object[1] %>
+        <% end %>
+    <% end %>
   </div>
   <br />
   <div class="text-secondary small">
     <label>Kategorie:</label><br />
-    <%= f.collection_check_boxes :"categories_id_in", Category.order(:name), :id, :name %>
+    <%= f.collection_check_boxes :"categories_id_in", Category.order(:name), :id, :name do |b| %>
+        <%= b.label(class: "check_box") do %>
+            <%= b.check_box(class: "check_box") %>
+            <%= b.object.name %>
+        <% end %>
+    <% end %>
   </div>
   <br />
   <div class="text-secondary small">
     <label>Składniki:</label><br />
-    <%= f.collection_check_boxes :"ingredients_id_in", Ingredient.order(:name), :id, :name %>
+    <%= f.collection_check_boxes :"ingredients_id_in", Ingredient.order(:name), :id, :name do |b| %>
+        <%= b.label(class: "check_box") do %>
+            <%= b.check_box(class: "check_box") %>
+            <%= b.object.name %>
+        <% end %>
+    <% end %>
   </div>
   <br />
   <div class="text-secondary small">

@@ -9,15 +9,15 @@
   <% else %>
       <% if category.posts.length == 1 %>
       <tr>
-      <th class="text-center"><%= link_to category.posts[0].title, post_path(category.posts[0]), class:'text-secondary small'%></th>
+      <th class="text-center"><%= link_to category.posts[0].title.upcase, post_path(category.posts[0]), class:'text-secondary small'%></th>
       </tr>
       <tr>
         <td><%= image_tag(category.posts[0].post_cover.url(:thumb), alt:'Image') if category.posts[0].post_cover? %></td>
       </tr>
       <% elsif category.posts.length == 2 %>
       <tr>
-        <th class="text-center"><%= link_to category.posts[0].title, post_path(category.posts[0]), class:'text-secondary small'%></th>
-        <th class="text-center"><%= link_to category.posts[1].title, post_path(category.posts[1]), class:'text-secondary small'%></th>
+        <th class="text-center"><%= link_to category.posts[0].title.upcase, post_path(category.posts[0]), class:'text-secondary small'%></th>
+        <th class="text-center"><%= link_to category.posts[1].title.upcase, post_path(category.posts[1]), class:'text-secondary small'%></th>
       </tr>
       <tr>
         <td><%= image_tag(category.posts[0].post_cover.url(:thumb), alt:'Image') if category.posts[0].post_cover? %></td>
@@ -25,9 +25,9 @@
       </tr>
       <% elsif category.posts.length >= 3 %>
       <tr>
-        <th class="text-center"><%= link_to category.posts[0].title, post_path(category.posts[0]), class:'text-secondary small'%></th>
-        <th class="text-center"><%= link_to category.posts[1].title, post_path(category.posts[1]), class:'text-secondary small'%></th>
-        <th class="text-center"><%= link_to category.posts[2].title, post_path(category.posts[2]), class:'text-secondary small'%></th>
+        <th class="text-center"><%= link_to category.posts[0].title.upcase, post_path(category.posts[0]), class:'text-secondary small'%></th>
+        <th class="text-center"><%= link_to category.posts[1].title.upcase, post_path(category.posts[1]), class:'text-secondary small'%></th>
+        <th class="text-center"><%= link_to category.posts[2].title.upcase, post_path(category.posts[2]), class:'text-secondary small'%></th>
       </tr>
       <tr>
         <td><%= image_tag(category.posts[0].post_cover.url(:thumb), alt:'Image') if category.posts[0].post_cover? %></td>

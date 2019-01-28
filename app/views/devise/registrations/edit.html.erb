@@ -1,63 +1,63 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class="text-secondary small">Edycja <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="text-secondary small">Oczekiwanie na potwierdzenie dla email: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "nowe hasło" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> znaków minimum</em>
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "nowe hasło" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class="field text-secondary small">
+    <%= f.label :current_password %> <i>(potrzebujemy Twojego hasła by potwierdzić zmiany)</i><br />
+    <%= f.password_field :current_password, autocomplete: "obecne hasło" %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :firstname %><br />
-    <%= f.text_field :firstname, autocomplete: "your first name" %>
+    <%= f.text_field :firstname, autocomplete: "Twoje imię" %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :lastname %><br />
-    <%= f.text_field :lastname, autocomplete: "your last name" %>
+    <%= f.text_field :lastname, autocomplete: "Twoje nazwisko" %>
   </div>
 
-  <div class="field">
-    <label>Your avatar:</label><br />
+  <div class="field text-secondary small">
+    <label>Twój avatar:</label><br />
     <%= f.file_field :avatar %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :description %><br />
     <%= f.text_area :description, autocomplete: "Napisz kilka słów o sobie:" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="actions text-secondary small">
+    <%= f.submit "Zaktualizuj" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h5 class="text-secondary">Usuń moje konto</h5>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p class="text-secondary small">Nie podoba Ci się? <%= button_to "Usuń konto", registration_path(resource_name), data: { confirm: "Jesteś pewny/a?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Wstecz", :back %>

@@ -1,48 +1,48 @@
-<h2>Sign up</h2>
+<h2 class="text-secondary small">Zarejestruj się</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> minimum znaków)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "nowe hasło" %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "nowe hasło" %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :firstname %><br />
-    <%= f.text_field :firstname, autocomplete: "your first name" %>
+    <%= f.text_field :firstname, autocomplete: "Twoje imię" %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :lastname %><br />
-    <%= f.text_field :lastname, autocomplete: "your last name" %>
+    <%= f.text_field :lastname, autocomplete: "Twoje nazwisko" %>
   </div>
 
-  <div class="field">
-    <label>Your avatar:</label><br />
+  <div class="field text-secondary small">
+    <label>Twój avatar:</label><br />
     <%= f.file_field :avatar %>
   </div>
 
-  <div class="field">
+  <div class="field text-secondary small">
     <%= f.label :description %><br />
-    <%= f.text_area :description, autocomplete: "Do you want to say a couple things about yourself?" %>
+    <%= f.text_area :description, autocomplete: "Napisz kilka słów o sobie" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions text-secondary small">
+    <%= f.submit "Zarejestruj się" %>
   </div>
 <% end %>
 

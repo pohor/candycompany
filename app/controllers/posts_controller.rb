@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @all_posts = Post.all
-    @q = Post.ransack(params[:q])
+    @q = Post.joins(:categories).joins(:ingredients).ransack(params[:q])
     @posts = @q.result
     @categories = Category.all
   end

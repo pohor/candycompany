@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :description, :avatar])
   end
 
+  def set_search
+    @q=Post.joins(:categories).joins(:ingredients).ransack(params[:q])
+  end
+
 end

@@ -1,13 +1,22 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :ransack, :search_result]
   before_action :authorize_post, only: [:destroy, :edit, :update]
+  before_action :set_search
 
   def index
-    @all_posts = Post.all
-    @q = Post.joins(:categories).joins(:ingredients).ransack(params[:q])
-    @posts = @q.result
+    @posts = Post.all
     @categories = Category.all
+  end
+
+  def ransack
+    search_result
+    render :search_result
+  end
+
+  def search_result
+    @q = Post.joins(:categories).joins(:ingredients).ransack(params[:q])
+    @posts = @q.result(distinct: true)
   end
 
   def show

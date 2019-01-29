@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="col-sm-11"
+        <%= render 'search'%>
+      </div>
+      <div class="col-sm-1"
+      </div>
+    </div>
+    <div class:"col-sm-9">
+      <div class="text-secondary">
+        <table>
+          <thead>
+            <tr>
+              <th><%= sort_link @q, :name, "Tytuł"%></th>
+              <th><%= sort_link @q, :time, "Czas"%></th>
+              <th><%= sort_link @q, :skills, "Poziom"%></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+            <tr>
+              <td><%= link_to post.title, post_path(post) %> </td>
+              <td><%= post.time %> </td>
+              <td><%= post.skills_name %> </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <br />
+      <div>
+        <%= link_to 'Wróć do wszystkich postów', posts_path, class: 'text-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>

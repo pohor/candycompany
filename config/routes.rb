@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts do
-     resources :hearts, only: %i[create destroy]
+    collection do
+      match 'ransack' => 'posts#ransack', via: [:get, :post], as: :ransack
+    end
+    resources :hearts, only: %i[create destroy]
   end
+
 
   resources :workshops
 

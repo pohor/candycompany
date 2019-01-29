@@ -7,35 +7,15 @@
       Nie ma żadnych postów w tej kategorii
     </p>
   <% else %>
-      <% if category.posts.length == 1 %>
-      <tr>
-      <th class="text-center"><%= link_to category.posts[0].title.upcase, post_path(category.posts[0]), class:'text-secondary small'%></th>
-      </tr>
-      <tr>
-        <td><%= image_tag(category.posts[0].post_cover.url(:thumb), alt:'Image') if category.posts[0].post_cover? %></td>
-      </tr>
-      <% elsif category.posts.length == 2 %>
-      <tr>
-        <th class="text-center"><%= link_to category.posts[0].title.upcase, post_path(category.posts[0]), class:'text-secondary small'%></th>
-        <th class="text-center"><%= link_to category.posts[1].title.upcase, post_path(category.posts[1]), class:'text-secondary small'%></th>
-      </tr>
-      <tr>
-        <td><%= image_tag(category.posts[0].post_cover.url(:thumb), alt:'Image') if category.posts[0].post_cover? %></td>
-        <td><%= image_tag(category.posts[1].post_cover.url(:thumb), alt:'Image') if category.posts[1].post_cover? %></td>
-      </tr>
-      <% elsif category.posts.length >= 3 %>
-      <tr>
-        <th class="text-center"><%= link_to category.posts[0].title.upcase, post_path(category.posts[0]), class:'text-secondary small'%></th>
-        <th class="text-center"><%= link_to category.posts[1].title.upcase, post_path(category.posts[1]), class:'text-secondary small'%></th>
-        <th class="text-center"><%= link_to category.posts[2].title.upcase, post_path(category.posts[2]), class:'text-secondary small'%></th>
-      </tr>
-      <tr>
-        <td><%= image_tag(category.posts[0].post_cover.url(:thumb), alt:'Image') if category.posts[0].post_cover? %></td>
-        <td><%= image_tag(category.posts[1].post_cover.url(:thumb), alt:'Image') if category.posts[1].post_cover? %></td>
-        <td><%= image_tag(category.posts[2].post_cover.url(:thumb), alt:'Image') if category.posts[2].post_cover? %></td>
-      </tr>
+      <% category.posts.limit(3).each do |post|%>
+        <tr>
+          <th class="text-center"><%= link_to post.title.upcase, post_path(post), class:'text-secondary small'%></th>
+        </tr>
+        <tr>
+          <td><%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %></td>
+        </tr>
       <% end %>
-  <% end %>
+    <% end %>
 </table>
 <br />
 <button type="button" class="btn btn-light text-secondary small btn-sm align-middle">
@@ -43,4 +23,3 @@
 </button>
 </div>
 <% end %>
-</div>

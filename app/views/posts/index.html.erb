@@ -1,31 +1,22 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3">
-        <%= render 'search'%>
-    </div>
-    <div class:"col-sm-9">
-      <div class="text-secondary">
-        <% @categories.each do |category| %>
-          <div class='hr'><span class='hr-title text-secondary'><%= category.name.upcase %></span></div>
-            <% if category.posts.any? == false %>
-                <p class='text-secondary small'>Nie ma żadnych postów w tej kategorii</p>
-              <% else %>
-                <% category.posts.limit(3).each do |post|%>
-                  <%= link_to post.title.upcase, post_path(post), class:'text-secondary small'%>
-                  <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %>
-                <% end %>
-              <% end %>
-            <br />
-          <button type="button" class="btn btn-light text-secondary small btn-sm align-middle">
-            <%= link_to 'Pokaż wszystkie posty z tej kategorii', category_path(category), class: 'text-secondary' %>
-          </button>
+
+<div class="right">
+  <% @categories.each do |category| %>
+    <div class='hr'><span class='hr-title text-secondary'><%= category.name.upcase %></span></div>
+      <% if category.posts.any? == false %>
+          <p class='text-secondary small'>Nie ma żadnych postów w tej kategorii</p>
+        <% else %>
+          <% category.posts.limit(3).each do |post|%>
+            <%= link_to post.title.upcase, post_path(post), class:'text-secondary small'%>
+            <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %>
+          <% end %>
         <% end %>
-      </div>
       <br />
-      <br />
-      <div>
-        <%= link_to 'Wróć do wszystkich postów', posts_path, class: 'text-secondary' %>
-      </div>
-    </div>
-  </div>
+    <button type="button" class="btn btn-light text-secondary small btn-sm align-middle">
+      <%= link_to 'Pokaż wszystkie posty z tej kategorii', category_path(category), class: 'text-secondary' %>
+    </button>
+  <% end %>
+</div>
+
+<div class="left">
+  <%= render 'search'%>
 </div>

@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
   def search_result
     @q = Post.joins(:categories).joins(:ingredients).ransack(params[:q])
-    @posts = @q.result(distinct: true)
+    @posts = @q.result(distinct: true).order("created_at DESC").paginate(page: params[:page], per_page: 3)
   end
 
   def show

@@ -1,6 +1,8 @@
 @import "feathericon";
 @import "bootstrap";
 
+
+
 .navbar-brand {
    width: 100%;
    left: 0;
@@ -89,3 +91,9 @@ div.hr {
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+
+
+    .sort_link {
+      color: #8c8c8c;
+      font-weight: lighter;
+    }

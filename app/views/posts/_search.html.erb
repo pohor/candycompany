@@ -3,19 +3,19 @@
 <%= search_form_for @q, url: ransack_posts_path,
                         html: { method: :post }  do |f| %>
   <div class="text-secondary small">
-    <label>Szukaj w treści:</label>
+    <label>SZUKAJ W TREŚCI:</label>
     <%= f.search_field :title_or_content_cont_any, class: 'form-control form-control-sm text-secondary small align-left' %>
   </div>
   <br />
   <div class="text-secondary small">
-    <label>Czas wykonania:</label>
+    <label>CZAS WYKONANIA:</label>
     <%= f.text_field :time_gteq, placeholder: 'min czas wykonania', class: 'form-control form-control-sm text-secondary small align-left' %>
     <%= f.text_field :time_lteq, placeholder: 'max czas wykonania', class: 'form-control form-control-sm text-secondary small align-left' %>
   </div>
   <br />
-  <div class="text-secondary small form-check form-check-inline">
-    <label>Poziom trudności:</label><br />
-    <%= f.collection_check_boxes :"skills_in", [[1, 'łatwy'] ,[2, 'średni'],[3, 'trudny']], :first, :last do |b| %>
+  <div class="text-secondary small">
+    <label>POZIOM TRUDNOŚCI</label><br />
+    <%= f.collection_check_boxes :"skills_in", [[1, 'ŁATWY'] ,[2, 'ŚREDNI'],[3, 'TRUDNY']], :first, :last do |b| %>
         <%= b.label(class: "check_box") do %>
             <%= b.check_box(class: "check_box") %>
             <%= b.object[1] %>
@@ -23,23 +23,22 @@
     <% end %>
   </div>
   <br />
-  <br />
   <div class="text-secondary small">
-    <label>Kategorie:</label><br />
+    <label>KATEGORIE:</label><br />
     <%= f.collection_check_boxes :"categories_id_in", Category.order(:name), :id, :name do |b| %>
         <%= b.label(class: "check_box") do %>
             <%= b.check_box(class: "check_box") %>
-            <%= b.object.name %>
+            <%= b.object.name.upcase %>
         <% end %>
     <% end %>
   </div>
   <br />
   <div class="text-secondary small">
-    <label>Składniki:</label><br />
+    <label>SKŁADNIKI:</label><br />
     <%= f.collection_check_boxes :"ingredients_id_in", Ingredient.order(:name), :id, :name do |b| %>
         <%= b.label(class: "check_box") do %>
             <%= b.check_box(class: "check_box") %>
-            <%= b.object.name %>
+            <%= b.object.name.upcase %>
         <% end %>
     <% end %>
   </div>

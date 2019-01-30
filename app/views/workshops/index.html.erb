@@ -4,10 +4,12 @@
     <div class="col-sm-6">
       <div class="card border-light mb-3 h-100 text-center">
         <div class="card-body">
+          <%= link_to workshop_path(workshop) do %>
           <img class="card-img-top-centre"><%= image_tag(workshop.workshop_cover.url(:thumb), alt:'Image') if workshop.workshop_cover? %></img>
+          <% end %>
            <br />
             <br />
-            <h6 class="card-title text-secondary"><%= workshop.name.upcase%></h6>
+            <h6 class="card-title text-secondary"><%= link_to workshop.name.upcase, workshop_path(workshop), class:'text-secondary'%></h6>
             <h6 class="card-title text-secondary small">GDZIE: <%= workshop.place.upcase%></h6>
             <h6 class="card-title text-secondary small">START: <%= workshop.date_start.strftime("%d-%m-%Y") %> GODZINA: <%= workshop.time_start.to_s(:time) %><br />
               KONIEC: <%= workshop.date_end.strftime("%d-%m-%Y") %> GODZINA: <%= workshop.end_time.to_s(:time) %>
@@ -23,8 +25,13 @@
       </div>
     <% end %>
   </div>
+  <div class="digg_pagination">
+  <%= will_paginate @posts, previous_label: "Poprzednie", next_label: "Następne", list_classes: %w(pagination justify-content-center), :page_links => false %>
+  </div>
 </div>
 
-<div class="digg_pagination">
-<%= will_paginate @posts, previous_label: "Poprzednie", next_label: "Następne", list_classes: %w(pagination justify-content-center), :page_links => false %>
+<div class="left">
+  <div class="col-sm-11">
+    <%= render "latest" %>
+  </div>
 </div>

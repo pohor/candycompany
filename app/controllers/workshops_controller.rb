@@ -1,9 +1,10 @@
 class WorkshopsController < ApplicationController
   before_action :find_workshop, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :find_latest
 
   def index
-    @workshops = Workshop.all.order("date_start DESC").paginate(page: params[:page], per_page: 3)
+    @workshops = Workshop.all.order("date_start DESC").paginate(page: params[:page], per_page: 2)
   end
 
   def show
@@ -52,5 +53,9 @@ class WorkshopsController < ApplicationController
 
     def workshop_params
       params.require(:workshop).permit(:name, :date_start, :workshop_cover, :date_end, :time_start, :end_time, :place, :description)
+    end
+
+    def find_latest
+      @latest_workshop = Workshop.all.order("date_start DESC").limit(1)[0]
     end
 end

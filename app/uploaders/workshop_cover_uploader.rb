@@ -38,6 +38,10 @@ class WorkshopCoverUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [350, 350]
   end
 
+  version :mini do
+    process resize_to_fit: [150, 150]
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_whitelist

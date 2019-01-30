@@ -1,13 +1,7 @@
-<div class="right">
-  <% @posts.each do |post| %>
-
-    <%= link_to post.title, post_path(post) %>
-    <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %>
-
-  <% end %>
-
-  <%= will_paginate @posts, previous_label: "Nowsze", next_label: "Starsze", list_classes: %w(pagination justify-content-center) %>
-</div>
-<div class="left">
-
+<% @posts.each do |post| %>
+  <%= link_to post.title, post_path(post) %>
+  <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %>
+<% end %>
+<div class="digg_pagination">
+<%= will_paginate @posts, previous_label: "Nowsze", next_label: "Starsze", list_classes: %w(pagination justify-content-center), :page_links => false %>
 </div>

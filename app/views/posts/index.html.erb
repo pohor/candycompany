@@ -1,22 +1,48 @@
-
 <div class="right">
-  <% @categories.each do |category| %>
-    <div class='hr'><span class='hr-title text-secondary'><%= category.name.upcase %></span></div>
-      <% if category.posts.any? == false %>
-          <p class='text-secondary small'>Nie ma żadnych postów w tej kategorii</p>
-        <% else %>
-          <% category.posts.limit(3).each do |post|%>
-            <%= link_to post.title.upcase, post_path(post), class:'text-secondary small'%>
-            <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %>
+    <% @categories.each do |category| %>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class='hr'><span class='hr-title text-secondary'><%= category.name.upcase%></span></div>
+          </div>
+            <% if category.posts.any? == false %>
+              <div class="col-sm-12">
+                <div class="card border-light mb-3 h-100 text-center">
+                  <div class="card-body">
+                    <h6 class="card-title text-secondary">Nie ma żadnych postów w tej kategorii</h6>
+                  </div>
+                </div>
+              </div>
+            <% else %>
+              <% category.posts.limit(3).each do |post|%>
+                <div class="col-sm-4">
+                  <div class="card border-light mb-3 h-100 text-center">
+                    <div class="card-body">
+                      <img class="card-img-top-centre"><%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %></img>
+                      <br />
+                      <br />
+                      <h6 class="card-title text-secondary"><%= post.title.upcase%></h6>
+                      <p class="card-text text-secondary small"><%= post.content.first(100) %>...
+                      <br />
+                      <br />
+                        <%= link_to 'Czytaj dalej...', post_path(post), class: 'text-secondary' %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
           <% end %>
-        <% end %>
-      <br />
-    <button type="button" class="btn btn-light text-secondary small btn-sm align-middle">
-      <%= link_to 'Pokaż wszystkie posty z tej kategorii', category_path(category), class: 'text-secondary' %>
-    </button>
+      <% if category.posts.length > 3 %>
+      <div class="col-sm-12">
+        <div align="center"><%= link_to 'Pokaż wszystkie posty z tej kategorii', category_path(category), class: 'btn btn-light text-secondary small btn-sm align-middle' %></div>
+      </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
+
 <div class="left">
-  <%= render 'search'%>
+  <div class="col-sm-11">
+      <%= render 'search'%>
+  </div>
 </div>

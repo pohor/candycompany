@@ -1,30 +1,30 @@
-<h1>All workshops:</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nazwa</th>
-      <th>Data rozpoczęcia</th>
-      <th>Data zakończenia</th>
-      <th>Godzina startu</th>
-      <th>Godzina zakończenia</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @workshops.each do |workshop| %>
-    <tr>
-      <td><%= link_to workshop.name, workshop_path(workshop) %> </td>
-      <td><%= workshop.date_start %> </td>
-      <td><%= workshop.date_end %></td>
-      <td><%= workshop.time_start.to_s(:time) %></td>
-      <td><%= workshop.end_time.to_s(:time) %></td>
-      <td><%= link_to 'Edytuj', edit_workshop_path(workshop) %> </td>
-      <td><%= link_to 'Usuń', workshop_path(workshop), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
-    </tr>
+<div class="right text-secondary" align="center">
+  <div class="row">
+  <% @workshops.each do |workshop| %>
+    <div class="col-sm-6">
+      <div class="card border-light mb-3 h-100 text-center">
+        <div class="card-body">
+          <img class="card-img-top-centre"><%= image_tag(workshop.workshop_cover.url(:thumb), alt:'Image') if workshop.workshop_cover? %></img>
+           <br />
+            <br />
+            <h6 class="card-title text-secondary"><%= workshop.name.upcase%></h6>
+            <h6 class="card-title text-secondary small">GDZIE: <%= workshop.place.upcase%></h6>
+            <h6 class="card-title text-secondary small">START: <%= workshop.date_start.strftime("%d-%m-%Y") %> GODZINA: <%= workshop.time_start.to_s(:time) %><br />
+              KONIEC: <%= workshop.date_end.strftime("%d-%m-%Y") %> GODZINA: <%= workshop.end_time.to_s(:time) %>
+            </h6>
+            <p class="card-text text-secondary small" style="padding-right: 50px; padding-left:50px">
+              <%= workshop.description.first(100) %>...
+              <br />
+              <br />
+              <%= link_to 'Czytaj dalej...', workshop_path(workshop), class: 'text-secondary' %>
+            </p>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<br />
-<br />
+  </div>
+</div>
+
+<div class="digg_pagination">
+<%= will_paginate @posts, previous_label: "Poprzednie", next_label: "Następne", list_classes: %w(pagination justify-content-center), :page_links => false %>
+</div>

@@ -11,8 +11,6 @@ class StaticPagesController < ApplicationController
   def kontakt
   end
 
-  def wspolpraca
-  end
 
   def admin
   end

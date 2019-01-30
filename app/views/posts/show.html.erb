@@ -1,9 +1,5 @@
-<div class="container-fluid">
-<div class="row">
-    <div class="col-sm-3">
-      O MNIE
-    </div>
-    <div class="col-sm-9">
+
+    <div class="right">
       <h3 class="text-secondary"> <%= @post.title %> </h3>
       <p>
         <%= image_tag(@post.post_cover.url(:regular), alt:'Image') if @post.post_cover? %>

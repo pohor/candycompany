@@ -1,30 +1,46 @@
+<div class="right" align="center">
 <p>
-  <strong> <%= @workshop.name %> </strong>
+  <h5 class="text-secondary"> <%= @workshop.name.upcase %> </h5>
 </p>
 <br>
 <br>
-
-<strong>Data:</strong>
-  <p>
-  od <%= @workshop.date_start %>
-  do <%= @workshop.date_end %>
-  </p>
+<p>
+  <%= image_tag(@workshop.workshop_cover.url, alt:'Image') if @workshop.workshop_cover? %>
+</p>
+<p class="text-secondary">
+  MIEJSCE: <%= @workshop.place.upcase %>
+</p>
 <br />
 <br />
-
-<strong>Godziny:</strong>
-  <p>
+<p class="text-secondary">
+  OD <%= @workshop.date_start.strftime("%d-%m-%Y") %>
+  DO <%= @workshop.date_end.strftime("%d-%m-%Y") %>
+</p>
+<br />
+<br />
+<p class="text-secondary">
+  GODZINY:
+</p>
+<p class="text-secondary">
   od <%= @workshop.time_start.to_s(:time) %>
   do <%= @workshop.end_time.to_s(:time) %>
-  </p>
+</p>
 <br />
 <br />
 
-<strong>Opis:</strong>
-<p>
+<p class="text-secondary">OPIS:</p>
+<p class="text-secondary small" style="padding-left: 150px; padding-right: 150px;">
   <%= @workshop.description %>
 </p>
 <br />
 <br />
-
-<%= link_to 'Back to all workshops', workshops_path %>
+<div>
+  <p class="text-secondary">
+    <%= link_to 'Wróć do wszystkich warsztatów', workshops_path, class: 'text-secondary' %>
+    <% if current_user&.admin? %>
+    | <%= link_to 'Edytuj', edit_workshop_path(@workshop), class:'text-secondary'%>
+    | <%= link_to 'Usuń', workshop_path(@workshop), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
+    <% end %>
+  </p>
+</div>
+</div>

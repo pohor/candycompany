@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
   private
 
   def find_content
-    @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 2)
+    @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 9)
     @categories = Category.all
     @ingredients = Ingredient.all
     @users = User.all

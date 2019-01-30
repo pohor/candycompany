@@ -1,7 +1,21 @@
-<% @posts.each do |post| %>
-  <%= link_to post.title, post_path(post) %>
-  <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %>
-<% end %>
+<div class="row" style="padding-left: 50px; padding-right: 50px;">
+  <% @posts.each do |post| %>
+  <div class="col-sm-3">
+    <div class="card border-light mb-3 h-100 text-center">
+      <div class="card-body">
+        <img class="card-img-top-centre"><%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %></img>
+        <br />
+        <br />
+        <h6 class="card-title text-secondary"><%= post.title.upcase%></h6>
+        <p class="card-text text-secondary small"><%= post.content.first(100) %>...<br /><br />
+          <%= link_to 'Czytaj dalej...', post_path(post), class: 'text-secondary' %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
 <div class="digg_pagination">
 <%= will_paginate @posts, previous_label: "Nowsze", next_label: "Starsze", list_classes: %w(pagination justify-content-center), :page_links => false %>
 </div>

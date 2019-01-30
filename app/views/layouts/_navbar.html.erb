@@ -20,7 +20,9 @@
   <% if current_user&.admin? %>
     <%= link_to 'ADMIN PAGE', admin_path, class:'text-secondary small' %>
   <% end %>
-  <a class="navbar-brand">
-    <%= image_tag("brand/logo.png") %>
-  </a>
+  <div class="navbar-brand center">
+    <%= link_to root_path do %>
+    <%= image_tag("brand/logo.png")%>
+    <% end %>
+  </div>
 </nav>

@@ -1,10 +1,27 @@
-<h5>All users:</h5>
-
-<% @users.each do |user| %>
-<p>
-  <%= link_to user.firstname, user %>
-  <%= user.fullname %>
-  <%= image_tag(user.avatar.url(:thumb), alt:'Image') if user.avatar? %>
-
-</p>
-<% end %>
+<div class="text-secondary" align="center">
+  <h6>WSZYSCY UŻYTKOWNICY:</h6>
+  <p class="text-secondary small">
+    LICZBA UŻYTKOWNIKÓW: <%= @users.count %>
+  </p>
+  <div class="row">
+  <% @users.each do |user| %>
+    <div class="col-sm-3">
+      <div class="card border-light mb-3 h-100 text-center">
+        <div class="card-body">
+          <%= link_to user_path(user) do %>
+          <img class="card-img-top-centre"><%= image_tag(user.avatar.url(:thumb), alt:'Image') if user.avatar? %></img>
+          <% end %>
+           <br />
+            <br />
+            <h6 class="card-title text-secondary"><%= link_to user.firstname.upcase, user_path(user), class:'text-secondary'%></h6>
+            <h6 class="card-title text-secondary small"><%= user.fullname.upcase%></h6>
+            <p class="card-text text-secondary small" style="padding-right: 50px; padding-left:50px"><%= user.description%></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="digg_pagination">
+  <%= will_paginate @users, previous_label: "Poprzedni", next_label: "Następni", list_classes: %w(pagination justify-content-center), :page_links => false %>
+  </div>
+</div>

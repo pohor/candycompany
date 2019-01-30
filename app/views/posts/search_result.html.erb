@@ -18,7 +18,11 @@
       <tbody>
         <% @posts.each do |post| %>
         <tr>
-          <td class="text-center" scope="row"><%= image_tag(post.post_cover.url(:mini), alt:'Image') if post.post_cover? %></td>
+          <td class="text-center" scope="row">
+            <%= link_to post_path(post) do %>
+            <%= image_tag(post.post_cover.url(:mini), alt:'Image') if post.post_cover? %>
+            <% end %>
+          </td>
           <td class="text-center" scope="row"><%= link_to post.title.upcase, post_path(post), class:"text-secondary" %> </td>
           <td class="text-center" scope="row"><%= post.time %> </td>
           <td class="text-center" scope="row"><%= post.skills_name.upcase %> </td>

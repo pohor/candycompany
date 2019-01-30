@@ -17,10 +17,12 @@
                 <div class="col-sm-4">
                   <div class="card border-light mb-3 h-100 text-center">
                     <div class="card-body">
+                      <%= link_to post_path(post) do %>
                       <img class="card-img-top-centre"><%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %></img>
+                      <% end %>
                       <br />
                       <br />
-                      <h6 class="card-title text-secondary"><%= post.title.upcase%></h6>
+                      <h6 class="card-title text-secondary"><%= link_to post.title.upcase, post_path(post), class: 'text-secondary'%></h6>
                       <p class="card-text text-secondary small"><%= post.content.first(100) %>...
                       <br />
                       <br />

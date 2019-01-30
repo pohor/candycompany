@@ -1,67 +1,66 @@
-
-    <div class="right">
-      <h3 class="text-secondary"> <%= @post.title %> </h3>
-      <p>
-        <%= image_tag(@post.post_cover.url(:regular), alt:'Image') if @post.post_cover? %>
-      </p>
-      <p class="text-secondary small">
-      <% if user_signed_in? %>
-        <% if @heart.persisted? %>
-        <i class="fe fe-heart"><%= link_to 'Unheart', post_heart_path(@post, @heart), method: :delete, class:'text-secondary' %></i>
-        <% else %>
-        <i class="fe fe-heart-o"> <%= link_to 'Heart', post_hearts_path(@post), method: :post, class:'text-secondary' %> </i>
-        <% end %>
+<div class="right">
+  <h6 class="text-secondary" align="center"><%= @post.title.upcase %> </h6>
+  <p align="center">
+    <%= image_tag(@post.post_cover.url(:regular), alt:'Image') if @post.post_cover? %>
+  </p>
+  <br />
+  <br />
+  <div class="text-secondary" align="left">
+    <h6 class:"small">PRZEPIS</h6>
+    <br />
+    <p class="text-secondary small">
+    <% if user_signed_in? %>
+      <% if @heart.persisted? %>
+      <i class="fe fe-heart"><%= link_to 'Unheart', post_heart_path(@post, @heart), method: :delete, class:'text-secondary' %></i>
       <% else %>
-      <i class="fe fe-heart">You can't heart this while you're not logged in</i>
+      <i class="fe fe-heart-o"> <%= link_to 'Heart', post_hearts_path(@post), method: :post, class:'text-secondary' %> </i>
       <% end %>
-      </p>
-      <p class="text-secondary small">
-      <%= pluralize(@post.hearts.count, 'person') %> hearted this post
-      </p>
-      <br />
-      <br />
-      <div class="text-secondary" align="left">
-        <h4>Przepis:</h4>
-          <p>
-          <%= @post.content %>
-          </p>
+    <% else %>
+    <i class="fe fe-heart">You can't heart this while you're not logged in</i>
+    <% end %>
+    </p>
+    <p class="text-secondary small">
+    <%= pluralize(@post.hearts.count, 'person') %> hearted this post
+    </p>
+    <br />
+    <p class="small">
+    <%= @post.content %>
+    </p>
 
-        <h6>Kategorie:</h6>
-          <ul>
-            <% @post.categories.each do |category|%>
-            <li><%= category.name %></li>
-            <% end %>
-          </ul>
-
-        <h6>Składniki:</h6>
-          <ul>
-            <% @post.ingredients.each do |ingredient|%>
-            <li><%= ingredient.name %></li>
-          <% end %>
-          </ul>
-
-        <h6>Czas:</h6>
-          <p>
-          <%= @post.time %> minut
-          </p>
-
-        <h6>Skala trudności:</h6>
-          <p>
-          <%= @post.skills_name %>
-          </p>
-      </div>
-
-
-      <br />
-      <br />
-      <p class="text-secondary">
-        <%= link_to 'Back to all posts', posts_path, class:'text-secondary'%>
-        <% if current_user&.admin? %>
-        | <%= link_to 'Edytuj', edit_post_path(@post), class:'text-secondary'%>
-        | <%= link_to 'Usuń', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
+    <h6 class="small">KATEGORIE:</h6>
+      <ul>
+        <% @post.categories.each do |category|%>
+        <li><%= link_to category.name.upcase, category_path(category), class:'text-secondary small'%></li>
         <% end %>
+      </ul>
+
+    <h6 class="small">SKŁADNIKI:</h6>
+      <ul>
+        <% @post.ingredients.each do |ingredient|%>
+        <li><%=link_to ingredient.name.upcase, ingredient_path(ingredient), class:'text-secondary small' %></li>
+      <% end %>
+      </ul>
+
+    <h6 class="small">CZAS:</h6>
+      <p class="small">
+      <%= @post.time %> MINUT
       </p>
-    </div>
+
+    <h6 class="small">SKALA TRUDNOŚCI:</h6>
+      <p class="small">
+      <%= @post.skills_name.upcase %>
+      </p>
   </div>
+    <br />
+    <br />
+    <div class="text-secondary small" align="center">
+      <%= link_to 'Back to all posts', posts_path, class:'text-secondary'%>
+      <% if current_user&.admin? %>
+      | <%= link_to 'Edytuj', edit_post_path(@post), class:'text-secondary'%>
+      | <%= link_to 'Usuń', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
+      <% end %>
+    </div>
 </div>
+<div class="left">
+  <%= render 'common/search' %>
 </div>

@@ -1,1 +1,6 @@
-<%= render 'posts/all' %>
+<% @posts.each do |post| %>
+
+  <%= link_to post.title, post_path(post) %>
+  <%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %>
+
+<% end %>

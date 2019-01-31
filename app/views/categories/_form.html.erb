@@ -1,3 +1,4 @@
+<%= render 'common/errors', model: @category %>
 <%= form_for @category do |f| %>
 
 <div>
@@ -15,3 +16,4 @@
 </div>
 
 <% end %>
+<%= link_to 'WRÓĆ', admin_path %>

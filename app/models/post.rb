@@ -1,4 +1,10 @@
 class Post < ApplicationRecord
+  validates :title, presence: true, length: 3..50
+  validates :content, presence: true, length: 3..2000
+  validates :time, presence: true
+  validates :skills, presence: true
+
+
   has_many :ingredients_posts
   has_many :ingredients, through: :ingredients_posts
 
@@ -6,7 +12,7 @@ class Post < ApplicationRecord
   has_many :categories, through: :categories_posts
 
   has_many :comments, dependent: :destroy
-  
+
   belongs_to :user
 
   has_many :hearts

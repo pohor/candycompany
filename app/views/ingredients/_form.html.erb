@@ -1,3 +1,4 @@
+<%= render 'common/errors', model: @ingredient %>
 <%= form_for @ingredient do |f| %>
 
 <div>
@@ -10,3 +11,4 @@
 </div>
 
 <% end %>
+<%= link_to 'WRÓĆ', admin_path %>

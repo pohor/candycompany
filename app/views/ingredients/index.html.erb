@@ -16,3 +16,6 @@
       </div>
     <% end %>
   </div>
+<div class="digg_pagination">
+<%= will_paginate @ingredients, previous_label: "POPRZEDNIE", next_label: "NASTĘPNE", list_classes: %w(pagination justify-content-center), :page_links => false %>
+</div>

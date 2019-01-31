@@ -11,16 +11,16 @@
     <p class="text-secondary small">
     <% if user_signed_in? %>
       <% if @heart.persisted? %>
-      <i class="fe fe-heart"><%= link_to 'Unheart', post_heart_path(@post, @heart), method: :delete, class:'text-secondary' %></i>
+      <i class="fe fe-heart"><%= link_to 'POLUB', post_heart_path(@post, @heart), method: :delete, class:'text-secondary' %></i>
       <% else %>
-      <i class="fe fe-heart-o"> <%= link_to 'Heart', post_hearts_path(@post), method: :post, class:'text-secondary' %> </i>
+      <i class="fe fe-heart-o"> <%= link_to 'ODLUB', post_hearts_path(@post), method: :post, class:'text-secondary' %> </i>
       <% end %>
     <% else %>
-    <i class="fe fe-heart">You can't heart this while you're not logged in</i>
+    <i class="fe fe-heart">Nie możesz tego polubić nie będąc zalogowanym</i>
     <% end %>
     </p>
     <p class="text-secondary small">
-    <%= pluralize(@post.hearts.count, 'person') %> hearted this post
+    <%= @post.hearts.count %> OSÓB POLUBIŁO TEN PRZEPIS
     </p>
     <br />
     <p class="small">

@@ -1,19 +1,16 @@
 <div class="text-secondary small">
 <p>
-  <h6 class="text-secondary small">AUTOR:</h6>
-  <%= comment.user.fullname.upcase %>
+  <%= image_tag(comment.user.avatar.url(:thumb), alt:'Image') if comment.user.avatar?%><%= comment.user.fullname.upcase %>
 </p>
 <p>
   <h6 class="text-secondary small">TREŚĆ KOMENTARZA:</h6>
   <%= simple_format(comment.text) %>
-</p>
-<p>
   <h6 class="text-secondary small">DATA UTWORZENIA:</h6><%= comment.created_at.strftime("%d-%m-%Y") %>
 </p>
 <p>
   <% if comment.user == current_user || current_user&.admin? %>
-      <%= link_to 'delete comment', post_comment_path(post_id: comment.post.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' }%> |
-      <%= link_to 'edit comment', edit_post_comment_path(post_id: comment.post.id, id: comment.id)%>
+      <%= link_to 'usuń komentarz', post_comment_path(post_id: comment.post.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class:'text-secondary small'%> |
+      <%= link_to 'edytuj komentarz', edit_post_comment_path(post_id: comment.post.id, id: comment.id), class:'text-secondary small'%>
   <% end %>
 </p>
 

@@ -35,8 +35,8 @@
 <br />
 <br />
 <div>
-  <p class="text-secondary">
-    <%= link_to 'Wróć do wszystkich warsztatów', workshops_path, class: 'text-secondary' %>
+  <p class="text-secondary small">
+    <%= link_to 'WRÓĆ DO WSZYSTKICH WARSZTATÓW', workshops_path, class: 'text-secondary' %>
     <% if current_user&.admin? %>
     | <%= link_to 'Edytuj', edit_workshop_path(@workshop), class:'text-secondary'%>
     | <%= link_to 'Usuń', workshop_path(@workshop), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>

@@ -2,10 +2,11 @@ class CategoriesController < ApplicationController
   before_action :find_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.order("name DESC").paginate(page: params[:page], per_page: 15)
   end
 
   def show
+    @posts = @category.posts.order("created_at DESC").paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -48,7 +49,7 @@ class CategoriesController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :category_cover)
     end
 
 end

@@ -52,9 +52,8 @@
       </p>
   </div>
     <br />
-    <br />
-    <div class="text-secondary small" align="center">
-      <%= link_to 'Back to all posts', posts_path, class:'text-secondary'%>
+    <div class="text-secondary small" align="center" style="padding-bottom: 50px;">
+      <%= link_to 'WRÓĆ DO WSZYSTKICH', posts_path, class:'text-secondary'%>
       <% if current_user&.admin? %>
       | <%= link_to 'Edytuj', edit_post_path(@post), class:'text-secondary'%>
       | <%= link_to 'Usuń', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>

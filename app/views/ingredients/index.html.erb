@@ -1,16 +1,18 @@
-<h1>All ingredients:</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name:</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @ingredients.each do |ingredient| %>
-    <tr>
-      <td><%= link_to ingredient.name, ingredient_path(ingredient) %> </td>
-    </tr>
+<div class="text-secondary" align="center">
+<h5>WSZYSTKIE SKŁADNIKI:</h5>
+</div>
+<br />
+  <div class="row">
+  <% @ingredients.each do |ingredient| %>
+    <div class="col-sm-4">
+      <div class="card border-light mb-3 h-100 text-center">
+        <div class="card-body">
+          <h6 class="card-title text-secondary"><%= link_to ingredient.name.upcase, ingredient_path(ingredient), class:'text-secondary'%></h6>
+            <p class="card-text text-secondary small" style="padding-right: 50px; padding-left:50px">
+              <%= link_to 'wszystkie przepisy...', ingredient_path(ingredient), class: 'text-secondary' %>
+            </p>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>

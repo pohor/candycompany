@@ -2,10 +2,11 @@ class IngredientsController < ApplicationController
   before_action :find_ingredient, only: [:show, :edit, :update, :destroy]
 
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.order("name DESC").paginate(page: params[:page], per_page: 20)
   end
 
   def show
+    @posts = @ingredient.posts.order("created_at DESC").paginate(page: params[:page], per_page: 10)
   end
 
   def new

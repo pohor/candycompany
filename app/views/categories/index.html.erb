@@ -1,16 +1,27 @@
-<h1>All Categories:</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name:</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-    <tr>
-      <td><%= link_to category.name, category_path(category) %> </td>
-    </tr>
+<div class="text-secondary" align="center">
+<h5>WSZYSTKIE KATEGORIE:</h5>
+</div>
+<div class="card-group">
+  <div class="row">
+  <% @categories.each do |category| %>
+    <div class="col-sm-3">
+      <div class="card border-light mb-3 h-100 text-center">
+        <div class="card-body">
+          <%= link_to category_path(category) do %>
+          <img class="card-img-top-centre"><%= image_tag(category.category_cover.url(:thumb), alt:'Image') if category.category_cover? %></img>
+          <% end %>
+           <br />
+            <br />
+            <h6 class="card-title text-secondary"><%= link_to category.name.upcase, category_path(category), class:'text-secondary'%></h6>
+            <p class="card-text text-secondary small" style="padding-right: 50px; padding-left:50px">
+              <%= link_to 'Zobacz wszystkie przepisy w tej kategorii', category_path(category), class: 'text-secondary' %>
+            </p>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+<div class="digg_pagination">
+<%= will_paginate @categories, previous_label: "Poprzednie", next_label: "Następne", list_classes: %w(pagination justify-content-center), :page_links => false %>
+</div>

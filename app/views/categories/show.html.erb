@@ -1,15 +1,39 @@
-<h2><%= @category.name %></h2>
-<h4>Przepisy w tej Kategorii:</h4>
-<table>
-  <thead>
-  </thead>
-  <tbody>
-    <% @category.posts.each do |post| %>
-    <tr>
-      <td><%= link_to post.title, post_path(post) %> </td>
-      <td><%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %></td>
-    </tr>
+<div align="center">
+  <h4 class="text-secondary"> <%= @category.name.upcase %> </h4><br />
+  <h5 class="text-secondary small">PRZEPISY Z TEJ KATEGORII:</h5><br />
+</div>
+
+<div class="row" style="padding-left: 50px; padding-right: 50px;">
+  <% @posts.each do |post| %>
+  <div class="col-sm-3">
+    <div class="card border-light mb-3 h-100 text-center">
+      <div class="card-body">
+        <%= link_to post_path(post) do %>
+        <img class="card-img-top-centre"><%= image_tag(post.post_cover.url(:thumb), alt:'Image') if post.post_cover? %></img>
+        <% end %>
+        <br />
+        <br />
+        <h6 class="card-title text-secondary"><%= link_to post.title.upcase, post_path(post), class: 'text-secondary'%></h6>
+        <p class="card-text text-secondary small"><%= post.content.first(100) %>...<br /><br />
+          <%= link_to 'Czytaj dalej...', post_path(post), class: 'text-secondary' %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="digg_pagination">
+<%= will_paginate @posts, previous_label: "Nowsze", next_label: "Starsze", list_classes: %w(pagination justify-content-center), :page_links => false %>
+</div>
+
+</div>
+  <br />
+  <div class="text-secondary small" align="center" style="padding-bottom: 50px;">
+    <%= link_to 'WRÓĆ DO WSZYSTKICH', category_path, class:'text-secondary'%>
+    <% if current_user&.admin? %>
+    | <%= link_to 'Edytuj', edit_category_path(@category), class:'text-secondary'%>
+    | <%= link_to 'Usuń', category_path(@category), method: :deyete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
     <% end %>
-  </tbody>
-</table>
+  </div>
 </div>

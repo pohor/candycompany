@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts do
+    resources :comments
     collection do
       match 'ransack' => 'posts#ransack', via: [:get, :post], as: :ransack
     end

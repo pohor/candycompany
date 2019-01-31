@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
-
+  has_many :comments
   has_many :hearts
   has_many :hearted_posts, through: :hearts, source: :post
 

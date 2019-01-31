@@ -1,0 +1,6 @@
+<div class="text-secondary-small" align="center">
+<h6 class="text-secondary">EDYTUJ KOMENTARZ</h6>
+<%= render 'form' %>
+<%= link_to 'USUŃ KOMENTARZ', post_comment_path(post_id: @comment.post.id, id: @comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-secondary small' %> |
+<%= link_to 'WSTECZ', post_path(@post), class: 'text-secondary small' %>
+</div>

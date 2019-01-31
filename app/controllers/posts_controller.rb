@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @heart = Heart.find_or_initialize_by(post: @post, user: current_user)
   end
 

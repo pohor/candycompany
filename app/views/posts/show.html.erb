@@ -51,7 +51,22 @@
       <%= @post.skills_name.upcase %>
       </p>
   </div>
-    <br />
+  <br />
+  <br />
+  <hr />
+    <div class="text-secondary">
+      <h6 class="">KOMENTARZE:</h6>
+      <br />
+      <br />
+      <%= render @post.comments %>
+
+      <p>
+      <% if user_signed_in? %>
+      <h6 class="text-secondary small">DODAJ KOMENTARZ:</h6>
+      <%= render 'comments/form' %>
+      </p>
+      <% end %>
+    </div>
     <div class="text-secondary small" align="center" style="padding-bottom: 50px;">
       <%= link_to 'WRÓĆ DO WSZYSTKICH', posts_path, class:'text-secondary'%>
       <% if current_user&.admin? %>
@@ -60,6 +75,7 @@
       <% end %>
     </div>
 </div>
+
 <div class="left">
   <%= render 'common/search' %>
 </div>

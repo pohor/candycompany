@@ -30,7 +30,7 @@
 </div>
   <br />
   <div class="text-secondary small" align="center" style="padding-bottom: 50px;">
-    <%= link_to 'WRÓĆ DO WSZYSTKICH', category_path, class:'text-secondary'%>
+    <%= link_to 'WRÓĆ DO WSZYSTKICH', categories_path, class:'text-secondary'%>
     <% if current_user&.admin? %>
     | <%= link_to 'Edytuj', edit_category_path(@category), class:'text-secondary'%>
     | <%= link_to 'Usuń', category_path(@category), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>

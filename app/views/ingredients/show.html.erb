@@ -32,6 +32,6 @@
   <%= link_to 'WRÓĆ DO WSZYSTKICH', ingredient_path, class:'text-secondary'%>
   <% if current_user&.admin? %>
   | <%= link_to 'Edytuj', edit_ingredient_path(@ingredient), class:'text-secondary'%>
-  | <%= link_to 'Usuń', ingredient_path(@ingredient), method: :deyete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
+  | <%= link_to 'Usuń', ingredient_path(@ingredient), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
   <% end %>
 </div>

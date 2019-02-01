@@ -33,7 +33,7 @@
     <%= link_to 'WRÓĆ DO WSZYSTKICH', category_path, class:'text-secondary'%>
     <% if current_user&.admin? %>
     | <%= link_to 'Edytuj', edit_category_path(@category), class:'text-secondary'%>
-    | <%= link_to 'Usuń', category_path(@category), method: :deyete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
+    | <%= link_to 'Usuń', category_path(@category), method: :delete, data: { confirm: 'Are you sure?'}, class:'text-secondary' %>
     <% end %>
   </div>
 </div>

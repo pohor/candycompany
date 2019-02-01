@@ -11,9 +11,9 @@
     <p class="text-secondary small">
     <% if user_signed_in? %>
       <% if @heart.persisted? %>
-      <i class="fe fe-heart"><%= link_to 'POLUB', post_heart_path(@post, @heart), method: :delete, class:'text-secondary' %></i>
+      <i class="fe fe-heart"><%= link_to 'ODLUB', post_heart_path(@post, @heart), method: :delete, class:'text-secondary' %></i>
       <% else %>
-      <i class="fe fe-heart-o"> <%= link_to 'ODLUB', post_hearts_path(@post), method: :post, class:'text-secondary' %> </i>
+      <i class="fe fe-heart-o"> <%= link_to 'POLUB', post_hearts_path(@post), method: :post, class:'text-secondary' %> </i>
       <% end %>
     <% else %>
     <i class="fe fe-heart">Nie możesz tego polubić nie będąc zalogowanym</i>

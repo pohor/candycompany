@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment.post = @post
     @comment.user = current_user
     if @comment.save
-      flash[:notice] = "You have successfuly added a comment."
+      flash[:notice] = "Udało Ci się dodać komentarz."
       redirect_to post_path(@post)
     else
       render 'posts/show'
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      flash[:notice] = "You have successfuly updated the comment."
+      flash[:notice] = "Udało Ci się zaktualizować komentarz."
       redirect_to post_path(@post)
     else
       render 'edit'
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    flash[:notice] = "You have deleted the comment."
+    flash[:notice] = "Udało Ci się usunąć komentarz."
     redirect_to post_path(@post)
   end
 
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
 
   def authenticate_user
     if @comment.user != current_user && !current_user&.admin?
-      flash[:alert] = "You are not allowed to do this."
+      flash[:alert] = "Ta akcja nie jest dla Ciebie dozwolona."
       redirect_to post_path(@post)
       return false
     end

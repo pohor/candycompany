@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user if current_user
       if @post.save
-        flash[:notice] = "You have successfuly added a new post."
+        flash[:notice] = "Udało Ci się dodać nowy post."
         redirect_to post_path(@post)
       else
         render 'new'
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 
   def update
       if @post.update(post_params) || current_user.admin?
-        flash[:notice] = "Post was successfuly updated."
+        flash[:notice] = "Post zaktualizowany."
         redirect_to post_path(@post)
       else
         render 'edit'
@@ -64,7 +64,7 @@ class PostsController < ApplicationController
   private
     def authorize_post
       if @post.user != current_user && !current_user&.admin?
-        flash[:alert] = "You are not allowed to do this."
+        flash[:alert] = "Ta akcja nie jest dla Ciebie dozwolona."
         redirect_to posts_path
         return false
       end

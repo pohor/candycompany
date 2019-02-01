@@ -9,7 +9,7 @@
 
   <div class="field text-secondary small">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "obecne hasło" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -20,7 +20,7 @@
   <% end -%>
 
   <div class="actions text-secondary small">
-    <%= f.submit "Log in", class: 'text-secondary small' %>
+    <%= f.submit "Zaloguj się", class: 'text-secondary small' %>
   </div>
 <% end %>
 

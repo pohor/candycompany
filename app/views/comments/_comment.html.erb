@@ -9,7 +9,7 @@
 </p>
 <p>
   <% if comment.user == current_user || current_user&.admin? %>
-      <%= link_to 'usuń komentarz', post_comment_path(post_id: comment.post.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class:'text-secondary small'%> |
+      <%= link_to 'usuń komentarz', post_comment_path(post_id: comment.post.id, id: comment.id), method: :delete, data: { confirm: 'Jesteś pewnien?' }, class:'text-secondary small'%> |
       <%= link_to 'edytuj komentarz', edit_post_comment_path(post_id: comment.post.id, id: comment.id), class:'text-secondary small'%>
   <% end %>
 </p>

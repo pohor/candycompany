@@ -58,7 +58,13 @@
       <h6 class="">KOMENTARZE:</h6>
       <br />
       <br />
-      <%= render @post.comments %>
+      <% if @post.comments.any? == true %>
+        <%= render @post.comments %>
+      <% else %>
+        <p class="text-secondary small">
+          JESZCZE NIKT NIE SKOMENTOWAŁ
+        </p>
+      <% end %>
 
       <p>
       <% if user_signed_in? %>

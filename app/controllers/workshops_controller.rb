@@ -22,7 +22,7 @@ class WorkshopsController < ApplicationController
   def create
     @workshop = Workshop.new(workshop_params)
       if @workshop.save
-        flash[:notice] = "You have successfuly added a new post."
+        flash[:notice] = "Udało Ci się dodać warsztat."
         redirect_to workshop_path(@workshop)
       else
         render 'new'
@@ -31,7 +31,7 @@ class WorkshopsController < ApplicationController
 
   def update
       if @workshop.update(workshop_params) || current_user.admin?
-        flash[:notice] = "Post was successfuly updated."
+        flash[:notice] = "Warsztat zaktualizowany."
         redirect_to workshop_path(@workshop)
       else
         render 'edit'
@@ -58,4 +58,6 @@ class WorkshopsController < ApplicationController
     def find_latest
       @latest_workshop = Workshop.all.order("date_start DESC").limit(1)[0]
     end
+
+
 end

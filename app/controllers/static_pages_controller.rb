@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :find_content
+  before_action :find_content, only: [:home, :admin]
 
   def home
   end

@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
   before_action :find_ingredient, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:show, :index ]
 
   def index
     @ingredients = Ingredient.all.order("name DESC").paginate(page: params[:page], per_page: 20)

@@ -32,6 +32,7 @@ postresql
 - fix flash messages
 - anchor the view not to pull up after action
 - add carousel with most recent possts in HOME
+- Finish nested comments - restrict to one level down
 
 ## Heroku
 This app is deployed on heroku under: https://candycompany.herokuapp.com/

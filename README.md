@@ -30,7 +30,7 @@ postresql
 - remove password validation on user account editting
 - add fixed search bar below the navbar
 - fix flash messages
-- anchor the view not to pull up afetr action
+- anchor the view not to pull up after action
 - add carousel with most recent possts in HOME
 
 ## Heroku

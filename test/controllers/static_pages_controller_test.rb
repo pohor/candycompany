@@ -1,29 +1,38 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get static_pages_home_url
-    assert_response :success
+
+  def setup
+      @base_title = "CandyCompany"
+    end
+
+  test "should get root" do
+   get root_url
+   assert_response :success
   end
 
-  test "should get warsztaty" do
-    get static_pages_warsztaty_url
+  test "should get home" do
+    get home_url
     assert_response :success
+    assert_select "title", "Home | #{@base_title}"
   end
 
   test "should get omnie" do
-    get static_pages_omnie_url
+    get omnie_url
     assert_response :success
+    assert_select "title", "O mnie | #{@base_title}"
   end
 
   test "should get kontakt" do
-    get static_pages_kontakt_url
+    get kontakt_url
     assert_response :success
+    assert_select "title", "Kontakt | #{@base_title}"
   end
 
-  test "should get wspolpraca" do
-    get static_pages_wspolpraca_url
+  test "should get admin" do
+    get admin_url
     assert_response :success
+    assert_select "title", "Admin | #{@base_title}"
   end
 
 end

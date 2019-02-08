@@ -27,6 +27,7 @@ This is developed to and will eventually replace my sister's current blog - cand
 postresql
 
 ## TO BE DONE:
+- tests - in progress
 - remove password validation on user account editting
 - add fixed search bar below the navbar
 - fix flash messages

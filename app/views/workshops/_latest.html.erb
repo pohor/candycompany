@@ -1,26 +1,28 @@
-<%= link_to workshop_path(@latest_workshop) do %>
-<h6 class="text-secondary">NAJBLIŻSZE WARSZTATY</h6>
-<p>
-  <h6 class="text-secondary small"> <%= @latest_workshop.name.upcase %> </h6>
-</p>
-<p>
-  <%= image_tag(@latest_workshop.workshop_cover.url(:mini), alt:'Image') if @latest_workshop.workshop_cover? %>
-</p>
-<p class="text-secondary small">
-  MIEJSCE: <%= @latest_workshop.place.upcase %>
-</p>
-<br />
-<p class="text-secondary small">
-  START: <%= @latest_workshop.date_start.strftime("%d-%m-%Y") %><br />
-  GODZ: <%= @latest_workshop.time_start.to_s(:time) %><br /><br />
-  KONIEC: <%= @latest_workshop.date_end.strftime("%d-%m-%Y") %><br />
-  GODZ: <%= @latest_workshop.end_time.to_s(:time) %>
-</p>
-<br />
-<p class="text-secondary">OPIS:</p>
-<p class="text-secondary small">
-  <%= @latest_workshop.description.first(100) %>
-</p>
-<br />
-<br />
+<% if @workshops.any? %>
+  <%= link_to workshop_path(@latest_workshop) do %>
+  <h6 class="text-secondary">NAJBLIŻSZE WARSZTATY</h6>
+  <p>
+    <h6 class="text-secondary small"> <%= @latest_workshop.name.upcase %> </h6>
+  </p>
+  <p>
+    <%= image_tag(@latest_workshop.workshop_cover.url(:mini), alt:'Image') if @latest_workshop.workshop_cover? %>
+  </p>
+  <p class="text-secondary small">
+    MIEJSCE: <%= @latest_workshop.place.upcase %>
+  </p>
+  <br />
+  <p class="text-secondary small">
+    START: <%= @latest_workshop.date_start.strftime("%d-%m-%Y") %><br />
+    GODZ: <%= @latest_workshop.time_start.to_s(:time) %><br /><br />
+    KONIEC: <%= @latest_workshop.date_end.strftime("%d-%m-%Y") %><br />
+    GODZ: <%= @latest_workshop.end_time.to_s(:time) %>
+  </p>
+  <br />
+  <p class="text-secondary">OPIS:</p>
+  <p class="text-secondary small">
+    <%= @latest_workshop.description.first(100) %>
+  </p>
+  <br />
+  <br />
+  <% end %>
 <% end %>

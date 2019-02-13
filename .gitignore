@@ -32,3 +32,7 @@
 
 /public/uploads/
 .env
+
+
+# Ignore Spring files.
+/spring/*.pid

@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :find_content, only: [:home, :admin]
+  before_action :authenticate_admin, only: [:admin]
 
   def home
   end
@@ -25,5 +26,12 @@ class StaticPagesController < ApplicationController
     @workshops = Workshop.all
   end
 
+  def authenticate_admin
+    if !user_signed_in? && !current_user&.admin?
+      flash[:alert] = 'Nie możesz tego wyświetlić'
+      return false
+    end
+    true    
+  end
 
 end

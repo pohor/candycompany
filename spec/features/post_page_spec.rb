@@ -1,9 +1,8 @@
 require 'rails_helper'
-require_relative '../factories'
 
 feature 'post page' do
   scenario 'post page' do
-    post = FactoryBot.build(:post)
+    post = FactoryBot.create(:post)
     visit("/posts/#{post.id}")
 
     expect(page).to have_content('Testowy Content')

@@ -1,6 +1,5 @@
 require 'rails_helper'
 require_relative '../support/new_post_form'
-require_relative '../factories'
 
 RSpec.feature "create new post", :type => :feature do
   let(:new_post_form) { NewPostForm.new }

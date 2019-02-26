@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
+2.5.3
 
-Things you may want to cover:
+## Rails version
+5.2.2
 
-* Ruby version
+## Additional gems used:
+- bootstrap 4.0
+- devise
+- carrierwave 1.0
+- cloudinary
+- mini_magick
+- ransack
+- feathericon-sass
+- will_paginate 3.1.0
+- will_paginate-bootstrap4
+- dotenv - rails for cloudinary keys, please see .env-example
 
-* System dependencies
+## What is this app?
+This is my first application done all by myself.
+It's a culinary blog with cake & sweets recipes, advanced search and users.
+This is developed to and will eventually replace my sister's current blog - candycompany.pl.
 
-* Configuration
+## Database
+postresql
 
-* Database creation
+## TO BE DONE:
+- tests - in progress
+- remove password validation on user account editting
+- add fixed search bar below the navbar
+- fix flash messages
+- anchor the view not to pull up after action
+- add carousel with most recent possts in HOME
+- Finish nested comments - restrict to one level down
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Heroku
+This app is deployed on heroku under: https://candycompany.herokuapp.com/

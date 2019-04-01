@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   end
 
   def update
-      if @post.update(post_params) || current_user.admin?
+      if @post.update(post_params) && current_user.admin?
         flash[:notice] = "Post zaktualizowany."
         redirect_to post_path(@post)
       else

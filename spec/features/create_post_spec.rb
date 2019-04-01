@@ -17,8 +17,8 @@ RSpec.feature "create new post", :type => :feature do
     end
 
   scenario 'unable to create new post when logged in as admin with invalid data' do
-    user = FactoryBot.create(:user)
-    login_as(user, :scope => :user)
+    admin = FactoryBot.create(:admin)
+    login_as(admin, :scope => :user)
     new_post_form.visit_admin_page.new_post.fill_with_null.submit
 
     expect(page).to have_content('prohibited this from being saved')
@@ -26,8 +26,8 @@ RSpec.feature "create new post", :type => :feature do
   end
 
   scenario 'succesfully create new post when logged in as admin with valid data' do
-    user = FactoryBot.create(:user)
-    login_as(user, :scope => :user)
+    admin = FactoryBot.create(:admin)
+    login_as(admin, :scope => :user)
     new_post_form.visit_admin_page.new_post.fill_in_with_all_params(title: 'Testowy Post', content: 'Testowy Content', time: '100').submit
 
     expect(page).to have_content('Udało Ci się dodać nowy post.')

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index, :ransack, :search_result]
-  before_action :authorize_post, only: [:destroy, :edit, :update]
+  before_action :authorize_post, except: [:show, :index, :ransack, :search_result]
   before_action :set_search
 
   def index
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
 
   private
     def authorize_post
-      if @post.user != current_user && !current_user&.admin?
+      if !current_user&.admin?
         flash[:alert] = "Ta akcja nie jest dla Ciebie dozwolona."
         redirect_to posts_path
         return false

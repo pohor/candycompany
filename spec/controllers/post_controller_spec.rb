@@ -58,9 +58,70 @@ describe PostsController do
         expect(response).to redirect_to(new_user_session_url)
       end
     end
-
   end
 
+  describe "regular user" do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      sign_in(user)
+    end
+
+    describe "GET index" do
+      it "renders :index template" do
+        get :index
+        expect(response).to render_template(:index)
+      end
+    end
+
+    describe "GET show" do
+      let(:post) { FactoryBot.create(:post)}
+
+      it "renders :show template" do
+        get :show, params: {id: post.id}
+        expect(response).to render_template(:show)
+      end
+      it "assigns requested post to @post" do
+        get :show, params: { id: post.id }
+        expect(assigns(:post)).to eq(post)
+      end
+    end
+
+    describe "GET new" do
+      it "redirects to posts index page" do
+        get :new
+        expect(response).to redirect_to(posts_path)
+      end
+    end
+
+    describe "POST create" do
+      it "redirects to posts index page" do
+        post :create, params: { post: FactoryBot.attributes_for(:post) }
+        expect(response).to redirect_to(posts_path)
+      end
+    end
+
+    describe "GET edit" do
+      it "redirects to posts index page" do
+        get :edit, params: { id: FactoryBot.create(:post).id }
+        expect(response).to redirect_to(posts_path)
+      end
+    end
+
+    describe "PUT update" do
+      it "redirects to posts index page" do
+        put :update, params: { id: FactoryBot.create(:post).id, post: FactoryBot.create(:post) }
+        expect(response).to redirect_to(posts_path)
+      end
+    end
+
+    describe "DELETE destroy" do
+      it "redirects to posts index page" do
+        delete :destroy, params: { id: FactoryBot.create(:post).id }
+        expect(response).to redirect_to(posts_path)
+      end
+    end
+
+  end
   # describe "GET new" do
   #   context "when the user is admin" do
   #     it "renders :new template" do

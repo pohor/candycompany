@@ -3,6 +3,15 @@ FactoryBot.define do
     sequence(:firstname) { |n| "#{n}test" }
     lastname { 'testtest' }
     description { 'testtesttesttest' }
+    admin { false }
+    email { "#{firstname}@example.com" }
+    password { 'f4k3p455w0rd' }
+  end
+
+  factory :admin do
+    sequence(:firstname) { |n| "#{n}test" }
+    lastname { 'testtest' }
+    description { 'testtesttesttest' }
     admin { true }
     email { "#{firstname}@example.com" }
     password { 'f4k3p455w0rd' }

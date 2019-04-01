@@ -10,13 +10,13 @@ RSpec.feature "create new post", :type => :feature do
     expect(page).to have_content('Nie możesz tego wyświetlić')
   end
 
-  scenario 'create new post when not logged in' do
+  scenario 'unable to create new post when not logged in' do
     new_post_form.visit_admin_page.new_post
 
     expect(page).to have_content('Aby kontynuować musisz się zalogować')
     end
 
-  scenario 'unable create new post when logged in as admin with invalid data' do
+  scenario 'unable to create new post when logged in as admin with invalid data' do
     user = FactoryBot.create(:user)
     login_as(user, :scope => :user)
     new_post_form.visit_admin_page.new_post.fill_with_null.submit

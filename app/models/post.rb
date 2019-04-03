@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: 3..2000
   validates :time, presence: true
   validates :skills, presence: true
-
+  validates :ingredients, presence: true
 
   has_many :ingredients_posts
   has_many :ingredients, through: :ingredients_posts
